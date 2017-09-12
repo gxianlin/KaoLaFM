@@ -17,10 +17,11 @@ import com.ilynn.base.util.LogUtils;
 
 public class BaseApplication extends Application {
     private static Context mContext;
-
+    private static BaseApplication application;
     @Override
     public void onCreate() {
         super.onCreate();
+        application = this;
         mContext = this;
         initLog();
     }
@@ -39,5 +40,9 @@ public class BaseApplication extends Application {
 
     public static Context getContext() {
         return mContext;
+    }
+
+    public static BaseApplication getInstance() {
+        return application;
     }
 }
