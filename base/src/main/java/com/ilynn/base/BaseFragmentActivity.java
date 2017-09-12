@@ -1,5 +1,7 @@
 package com.ilynn.base;
 
+import android.support.v4.app.FragmentActivity;
+
 /**
  * 描述：TODO
  * 作者：gong.xl
@@ -9,5 +11,6 @@ package com.ilynn.base;
  * 邮箱：gong.xl@wonhigh.cn
  */
 
-public class BaseFragmentActivity {
+public class BaseFragmentActivity extends FragmentActivity{
+
 }
