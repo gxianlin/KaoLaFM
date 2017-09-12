@@ -1,0 +1,345 @@
+考拉fm
+
+启动:
+
+GET	http://engine.audiobuy.cc/1.0.0/ad_engine?adzoneId=14&deviceId=b2b131755acb81e8b9286139cccfbcb3&userId=0&deviceType=1&osType=1&appId=8fbf02809128e437bb29383a6f8d0e2a&appVersion=5.0.2&sdkVersion=1.0.0&channelId=0&models=&c_picHeight=640&c_picWidth=400
+
+	{
+	"result": {
+		"adCreative": [],
+		"sessionId": "",
+		"transType": 0,
+		"cost": 0,
+		"memberId": 0,
+		"secondaryMemberId": "",
+		"md5Code": "",
+		"appid": null
+	},
+	"status": 4,
+	"msg": "ad list is null",
+	"success": false
+}
+
+
+
+广告
+get:
+http://api.kaolafm.com/api/v4/config/list?timezone=28800&installid=10000&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503046518246&operator=0&lon=0.0&lat=0.0&network=1&timestamp=1503046518&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+版本更新检测
+GET	http://api.kaolafm.com/api/v4/upgrade/check?timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503050159283&operator=0&lon=0.0&lat=0.0&network=1&timestamp=1503050166&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+post:
+	http://passport.kaolafm.com/v4/app/active?timezone=28800&installid=10000&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503046518754&operator=0&lon=0.0&lat=0.0&network=1&timestamp=1503046519&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&action=4&
+
+	osversion=5.1.1&devicename=PDT-APAD-P&producer=AUTOID&screensize=9.43&mac=20%3A59%3Aa0%3A10%3A0d%3Aaa&imei=866829020826551&status=0&
+
+	osversion	5.1.1
+	devicename	PDT-APAD-P
+	producer	AUTOID
+	screensize	9.43
+	mac	20:59:a0:10:0d:aa
+	imei	866829020826551
+	status	0
+
+//欢迎也广告图
+GET	http://api.kaolafm.com/api/v4/splashscreen/list?timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=0.0&lat=0.0&network=1&timestamp=1503047319&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+	{
+	"code": "10000",
+	"message": "success",
+	"result": {
+		"showTime": 3,
+		"img": "http://img.kaolafm.net/mz/images/201708/1da33ad3-cff8-4d6b-a3e1-e1a81473f8da/720_1100.jpg",
+		"actionType": -1,
+		"action": null,
+		"currentTime": null,
+		"oid": 2889
+	},
+	"serverTime": 1503047313635
+	}
+
+GET	http://api.kaolafm.com/api/v4/upgrade/check?timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=0.0&lat=0.0&network=1&timestamp=1503047324&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+	{
+	"code": "10000",
+	"message": "success",
+	"result": {
+		"updateType": -1,
+		"updateVersion": null,
+		"updateInfo": null,
+		"updateUrl": null
+	},
+	"serverTime": 1503047319197
+	}
+
+GET http://api.kaolafm.com/api/v4/show/usersubscribe?timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=0.0&lat=0.0&network=1&timestamp=1503047324&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+	{
+	"code": "10000",
+	"message": "success",
+	"result": {
+		"radioId": 1200000000237,
+		"isShow": 0
+	},
+	"serverTime": 1503047319205
+	}
+
+
+//首页tab菜单
+GET	http://api.kaolafm.com/api/v4/4.7.1/navigate/list?timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=0.0&lat=0.0&network=1&timestamp=1503047324&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+	{
+	"code": "10000",
+	"message": "success",
+	"result": {
+		"dataList": [{
+			"name": "推荐",
+			"type": 1
+		}, {
+			"name": "分类",
+			"type": 2
+		}, {
+			"name": "广播",
+			"type": 3
+		}, {
+			"name": "主播",
+			"type": 6
+		}]
+	},
+	"serverTime": 1503047319218
+	}
+
+GET	http://api.kaolafm.com/api/v4/resource/searchwords?timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=0.0&lat=0.0&network=1&timestamp=1503047324&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+	{
+	"code": "10000",
+	"message": "success",
+	"result": {
+		"data": "相声"
+	},
+	"serverTime": 1503047319219
+	}
+
+GET	http://api.kaolafm.com/api/v4/smartradiodetail/get?timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=0.0&lat=0.0&network=1&timestamp=1503047324&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+	{
+	"code": "10000",
+	"message": "success",
+	"result": {
+		"id": 1200000000232,
+		"name": "猜你喜欢.fm",
+		"pic": "http://img.kaolafm.net/mz/images/201509/e1d0e693-75cd-4c24-8670-472bc4a18809/default.jpg",
+		"isSubscribe": 0,
+		"followedNum": 26192,
+		"isOnline": 1,
+		"radioDesc": "考拉FM独家推出的个性化智能台，根据你的收听轨迹、订阅、收藏等行为了解你的喜好，推荐你喜欢的节目，真正做到：你想听什么，我就播什么。\n打破传统广播规定时间播放规定节目的束缚，是真正专属你的私人电台。\n\n",
+		"listenNum": 1338680,
+		"shareUrl": "http://m.kaolafm.com/share/zj.html?type=1&albumId=1200000000232",
+		"type": 3,
+		"host": [],
+		"produce": "车语传媒",
+		"keyWords": ["猜你喜欢", "独家", "听你爱听", "私人电台"],
+		"commentNum": 139,
+		"typeId": -1
+	},
+	"serverTime": 1503047319325
+	}
+
+GET	http://api.kaolafm.com/api/v4/config/list?timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=0.0&lat=0.0&network=1&timestamp=1503047324&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+	{
+	"code": "10000",
+	"message": "success",
+	"result": {
+		"switches": {
+			"shareReport": true,
+			"userLive": false,
+			"phoneSteward": false
+		},
+		"bgpic": {
+			"livepic": ""
+		},
+		"dns": {
+			"open": false
+		},
+		"countshare": {
+			"topicShare": 1,
+			"likeShare": 1
+		},
+		"wordshare": {
+			"playerLikeWeibo": "一直以来，我们习惯用眼观察世界。考拉FM，让我们试着用耳朵倾听更多。这是我分享的“[title]”。更多精彩，请下载考拉FM [link]",
+			"playerShareWeibo": "一直以来，我们习惯用眼观察世界。考拉FM，让我们试着用耳朵倾听更多。这是我分享的“[title]”。更多精彩，请下载考拉FM [link]",
+			"albumShareWeibo": "一直以来，我们习惯用眼观察世界。考拉FM，让我们试着用耳朵倾听更多。这是我分享的“[title]”。更多精彩，请下载考拉FM [link]。"
+		},
+		"adinterval": {
+			"interval": 1800
+		}
+	},
+	"serverTime": 1503047319321
+	}
+
+GET	http://api.kaolafm.com/api/v4/broadcast/getarea?timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503047325&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+	{
+	"code": "10000",
+	"message": "success",
+	"result": {
+		"id": 26,
+		"name": "广东"
+	},
+	"serverTime": 1503047319378
+	}
+
+//首页 推荐 
+GET	http://api.kaolafm.com/api/v4/pagecontent/list?pageid=109&firstLoadFlag=1&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503047325&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+	//推荐 快捷入口 搞笑 tab菜单
+	URL	http://api.kaolafm.com/api/v4/category/list?fid=648&timezone=28800&installid=0004AnFP&udid=62bf5d800484a0cf66269f0d4fcc0d6c&sessionid=62bf5d800484a0cf66269f0d4fcc0d6c1503282924028&imsi=460110290248003&operator=0&lon=113.938863&lat=22.506443&network=1&timestamp=1503283836&sign=6da56911a412f147f90b670a40d60b76&resolution=1080*1920&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+	//小说 tab菜单(改变fid,从首页)
+	URL	http://api.kaolafm.com/api/v4/category/list?fid=32&timezone=28800&installid=0004AnFP&udid=62bf5d800484a0cf66269f0d4fcc0d6c&sessionid=62bf5d800484a0cf66269f0d4fcc0d6c1503282924028&imsi=460110290248003&operator=0&lon=113.938863&lat=22.506443&network=1&timestamp=1503284365&sign=6da56911a412f147f90b670a40d60b76&resolution=1080*1920&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+	
+	//推荐 快捷入口 搞笑 精选
+	URL	http://api.kaolafm.com/api/v4/pagecontent/list?pageid=3&firstLoadFlag=0&timezone=28800&installid=0004AnFP&udid=62bf5d800484a0cf66269f0d4fcc0d6c&sessionid=62bf5d800484a0cf66269f0d4fcc0d6c1503282924028&imsi=460110290248003&operator=0&lon=113.938863&lat=22.506443&network=1&timestamp=1503283837&sign=6da56911a412f147f90b670a40d60b76&resolution=1080*1920&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+	//小说 精选
+	URL	http://api.kaolafm.com/api/v4/pagecontent/list?pageid=4&firstLoadFlag=0&timezone=28800&installid=0004AnFP&udid=62bf5d800484a0cf66269f0d4fcc0d6c&sessionid=62bf5d800484a0cf66269f0d4fcc0d6c1503282924028&imsi=460110290248003&operator=0&lon=113.938863&lat=22.506443&network=1&timestamp=1503284365&sign=6da56911a412f147f90b670a40d60b76&resolution=1080*1920&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+	//搞笑 全部
+	URL	http://api.kaolafm.com/api/v4/resource/adsearch?words=&cid=648&sorttype=HOT_RANK_DESC&pagesize=10&pagenum=1&rtype=20000&timezone=28800&installid=0004AnFP&udid=62bf5d800484a0cf66269f0d4fcc0d6c&sessionid=62bf5d800484a0cf66269f0d4fcc0d6c1503282924028&imsi=460110290248003&operator=0&lon=113.938863&lat=22.506443&network=1&timestamp=1503283978&sign=6da56911a412f147f90b670a40d60b76&resolution=1080*1920&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+	//搞笑 笑话段子(改变cid,从上面tab菜单获取)
+	URL	http://api.kaolafm.com/api/v4/resource/adsearch?words=&cid=667&sorttype=HOT_RANK_DESC&pagesize=10&pagenum=1&rtype=20000&timezone=28800&installid=0004AnFP&udid=62bf5d800484a0cf66269f0d4fcc0d6c&sessionid=62bf5d800484a0cf66269f0d4fcc0d6c1503282924028&imsi=460110290248003&operator=0&lon=113.938863&lat=22.506443&network=1&timestamp=1503284218&sign=6da56911a412f147f90b670a40d60b76&resolution=1080*1920&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+//首页 推荐 猜你喜欢刷新
+URL	http://api.kaolafm.com/api/v4/user/like?pagesize=3&pagenum=2&timezone=28800&installid=0004AnFP&udid=62bf5d800484a0cf66269f0d4fcc0d6c&sessionid=62bf5d800484a0cf66269f0d4fcc0d6c1503282924028&imsi=460110290248003&operator=0&lon=113.938863&lat=22.506443&network=1&timestamp=1503284848&sign=6da56911a412f147f90b670a40d60b76&resolution=1080*1920&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+//猜你喜欢全部
+URL	http://api.kaolafm.com/api/v4/user/like?pagesize=20&pagenum=1&firstLoadFlag=1&timezone=28800&installid=0004AnFP&udid=62bf5d800484a0cf66269f0d4fcc0d6c&sessionid=62bf5d800484a0cf66269f0d4fcc0d6c1503282924028&imsi=460110290248003&operator=0&lon=113.938863&lat=22.506443&network=1&timestamp=1503284973&sign=6da56911a412f147f90b670a40d60b76&resolution=1080*1920&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+//首页 广播
+URL	http://api.kaolafm.com/api/v4/pagecontent/list?pageid=107&timezone=28800&installid=0004AnFP&udid=62bf5d800484a0cf66269f0d4fcc0d6c&sessionid=62bf5d800484a0cf66269f0d4fcc0d6c1503282924028&imsi=460110290248003&operator=0&lon=113.938863&lat=22.506443&network=1&timestamp=1503283161&sign=6da56911a412f147f90b670a40d60b76&resolution=1080*1920&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+//首页 主播
+URL	http://api.kaolafm.com/api/v4/pagecontent/list?pageid=105&timezone=28800&installid=0004AnFP&udid=62bf5d800484a0cf66269f0d4fcc0d6c&sessionid=62bf5d800484a0cf66269f0d4fcc0d6c1503282924028&imsi=460110290248003&operator=0&lon=113.938863&lat=22.506443&network=1&timestamp=1503283162&sign=6da56911a412f147f90b670a40d60b76&resolution=1080*1920&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+	
+
+	分类菜单
+GET	http://api.kaolafm.com/api/v4/category/get/allinfo?timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503047325&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+		
+	分类菜单
+GET	http://api.kaolafm.com/api/v4/category/get/oldinfo
+
+	分类菜单
+GET	http://api.kaolafm.com/api/v4/category/get/broadinfo
+
+//
+GET	http://api.kaolafm.com/api/v4/radioplayinfo/list?radioid=1200000000232&clockid=&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503047325&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+		
+		http://api.kaolafm.com/api/v4/radioplayinfo/list?radioid=1200000000232
+
+主播详情
+GET	http://api.kaolafm.com/api/v4/albumdetail/get?albumid=1100000000747&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503048963&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+	{
+	"code": "10000",
+	"message": "success",
+	"result": {
+		"id": 1100000000747,
+		"name": "情感治愈系",
+		"pic": "http://img.kaolafm.net/mz/images/201412/57027d68-bd12-45b1-97a3-d92daf5549a4/default.jpg",
+		"categoryId": 122,
+		"categoryName": "治愈",
+		"isSubscribe": 0,
+		"followedNum": 2332884,
+		"countNum": 1498,
+		"isOnline": 1,
+		"radioDesc": "长期霸占考拉节目排行榜前三。\r\n考拉FM独家情感节目，在这个世界里你需要一个温暖的声音，在这个城市里你需要一种自由的呼吸，男人和女人同样都需要治愈。每日零点更新，欢迎收听。\r\n\r\n网友@空音评论：主持人的声音很好听！治愈系的节目听的不少，还是喜欢这个节目。",
+		"listenNum": 108819353,
+		"shareUrl": "http://m.kaolafm.com/share/zj.html?albumId=1100000000747",
+		"sortType": 0,
+		"hasCopyright": 1,
+		"type": 0,
+		"host": [{
+			"name": "寒霜",
+			"des": "靠电视出山，靠电台吃饭，网站特邀写手，声音录制专家，每天耳朵里20个小时有声音，对于声音的热爱程度已经进入病态。\r\n",
+			"img": "http://img.kaolafm.net/mz/images/201310/ef71019d-36ab-4c58-a6ee-4fbcf4870159/default.jpg"
+		}],
+		"produce": "考拉FM",
+		"status": "更新中",
+		"updateDay": "每天更新",
+		"copyrightLabel": "独播",
+		"keyWords": ["情感", "治愈", "暖心故事", "励志", "寒霜"],
+		"commentNum": 1641,
+		"uploaderId": 2084038,
+		"uploadUserName": "寒霜",
+		"uploadUserImg": "http://img.kaolafm.net/mz/images/201511/10801d33-e8a0-4adb-9eef-7fa41db5be26/default.jpg",
+		"isReward": 1
+	},
+	"serverTime": 1503048957590
+}
+
+治愈系
+主播节目列表
+GET	http://api.kaolafm.com/api/v4/audios/list?id=1100000000747&sorttype=1&pagesize=20&pagenum=1&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503048963&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+主播详情相识列表
+URL	http://api.kaolafm.com/api/v4/related/album?id=1100000000747&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503048963&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+主播详情 热门评论
+GET	http://api.kaolafm.com/api/v4/comment/hot?resourcetype=0&resourceid=1100000000747&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503048964&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+主播详情 最新评论
+GET	http://api.kaolafm.com/api/v4/comment/new?resourcetype=0&resourceid=1100000000747&pagesize=10&pagenum=1&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503048965&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+主播信息
+GET	http://passport.kaolafm.com/v4/userv4/others/get?othersuid=2084038&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503048964&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&action=43&
+
+
+
+主播信息
+URL	http://passport.kaolafm.com/v4/userv4/others/get?othersuid=1015105&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503049553&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&action=58&
+
+URL	http://api.kaolafm.com/api/v4/liveplay/other/likednum?othersuid=1015105&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503049553&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+	{
+	"code": "10000",
+	"message": "success",
+	"result": {
+		"count": 1542605
+	},
+	"serverTime": 1503049547864
+	}
+
+URL	http://api.kaolafm.com/api/v4/liveplay/other/show?othersuid=1015105&lock=1&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503049554&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+	{
+	"code": "10000",
+	"message": "success",
+	"result": null,
+	"serverTime": 1503049547860
+	}
+URL	http://api.kaolafm.com/api/v4/liveplay/other/show?othersuid=1015105&lock=1&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503049554&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+	{
+	"code": "10000",
+	"message": "success",
+	"result": null,
+	"serverTime": 1503049550332
+	}
+打赏列表
+URL	http://api.kaolafm.com/api/v4/user/other/reward?&othersuid=1015105&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503049554&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+他发布的专辑列表
+URL	http://api.kaolafm.com/api/v4/issue/list/other?pagesize=3&pagenum=1&othersuid=1015105&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503049554&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+他赞过的节目
+URL	http://api.kaolafm.com/api/v4/like/other?pagesize=3&pagenum=1&othersuid=1015105&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503049554&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+他的订阅
+URL	http://api.kaolafm.com/api/v4/subscribe/other?pagesize=3&pagenum=1&othersuid=1015105&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503049554&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&
+
+
+
+
+
+
+
+
+
+
+
+
+
