@@ -21,7 +21,7 @@ import com.ilynn.base.util.LogUtils;
  * 邮箱：gong.xl@wonhigh.cn
  */
 
-public abstract class BaseAvtivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
     protected final String TAG = getClass().getSimpleName();
     private SparseArray<View> mViews;
 

@@ -18,6 +18,7 @@ import com.ilynn.base.util.LogUtils;
 public class BaseApplication extends Application {
     private static Context mContext;
     private static BaseApplication application;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -26,6 +27,9 @@ public class BaseApplication extends Application {
         initLog();
     }
 
+    /**
+     * 初始化日志工具类
+     */
     private void initLog() {
         LogUtils.Builder logBuilder = new LogUtils.Builder();
         logBuilder = new LogUtils.Builder()
