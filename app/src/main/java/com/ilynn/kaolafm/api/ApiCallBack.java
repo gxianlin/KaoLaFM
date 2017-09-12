@@ -1,7 +1,7 @@
 package com.ilynn.kaolafm.api;
 
 import com.google.gson.internal.$Gson$Types;
-import com.ilynn.base.util.Logger;
+import com.ilynn.base.util.LogUtils;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -9,9 +9,9 @@ import java.lang.reflect.Type;
 import rx.Subscriber;
 
 
- /**
+/**
  * 描述：处理网络数据处理完成后的回调响应
- *
+ * <p>
  * 作者：gong.xl
  * 创建日期：2017/9/12 下午5:05
  * 修改日期: 2017/9/12
@@ -38,13 +38,13 @@ public abstract class ApiCallBack<M> extends Subscriber<M> {
 
         if (mType instanceof Class) {
             clazz = (Class<M>) mType;
-            Logger.i(TAG, "class = " + clazz.getSimpleName() + " + " + clazz.getName() + " + " + clazz
+            LogUtils.i(TAG, "class = " + clazz.getSimpleName() + " + " + clazz.getName() + " + " + clazz
                     .getCanonicalName());
         } else if (mType instanceof ParameterizedType) {
             ParameterizedType type = (ParameterizedType) mType;
             Type[] actualTypeArguments = type.getActualTypeArguments();
             clazz = (Class<M>) actualTypeArguments[0];
-            Logger.i(TAG, "ArrayList<Class> = " + clazz.getSimpleName() + " + " + clazz.getName() +
+            LogUtils.i(TAG, "ArrayList<Class> = " + clazz.getSimpleName() + " + " + clazz.getName() +
                     " + " + clazz
                     .getCanonicalName());
         }
@@ -81,21 +81,24 @@ public abstract class ApiCallBack<M> extends Subscriber<M> {
     @Override
     public void onStart() {
         super.onStart();
+        onStarted();
     }
 
     @Override
     public void onNext(M m) {
-
+        onSuccess(m);
     }
 
     @Override
     public void onCompleted() {
-
+        onFinished();
     }
 
     @Override
     public void onError(Throwable e) {
 
+        onFailure(1, e.getMessage());
+        onFinished();
     }
 
 

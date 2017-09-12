@@ -51,7 +51,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(@Nullable Bundle savedIntanceState) {
         super.onCreate(savedIntanceState);
-        LogUtils.d(TAG,"onCreate()");
+        LogUtils.d(TAG, "onCreate()");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mViews = new SparseArray<>();
         setContentView(getLayoutId());
@@ -70,6 +70,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     /**
      * 点击事件回调
+     *
      * @param v
      */
     @Override
@@ -126,6 +127,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         Toast.makeText(this, getString(toastRes), Toast.LENGTH_SHORT).show();
     }
 
+    public void showToast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
     /**
      * 设置view的点击事件
      *
@@ -139,36 +144,36 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onStart() {
         super.onStart();
-        LogUtils.d(TAG,"onStart()");
+        LogUtils.d(TAG, "onStart()");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        LogUtils.d(TAG,"onResume()");
+        LogUtils.d(TAG, "onResume()");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        LogUtils.d(TAG,"onPause()");
+        LogUtils.d(TAG, "onPause()");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        LogUtils.d(TAG,"onStop()");
+        LogUtils.d(TAG, "onStop()");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        LogUtils.d(TAG,"onRestart()");
+        LogUtils.d(TAG, "onRestart()");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        LogUtils.d(TAG,"onDestroy()");
+        LogUtils.d(TAG, "onDestroy()");
     }
 }

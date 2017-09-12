@@ -14,7 +14,7 @@ import rx.subscriptions.CompositeSubscription;
  * 邮箱：gong.xl@wonhigh.cn
  */
 
-public abstract class BasePresenter<V extends IView> implements IPresenter<V> {
+public abstract class BasePresenter<V extends IView> implements IPresenter<V>,IModel {
     protected V mView;
     protected CompositeSubscription mSubscription;
 
