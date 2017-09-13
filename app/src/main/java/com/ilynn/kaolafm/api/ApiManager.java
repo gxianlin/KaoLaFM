@@ -5,6 +5,7 @@ import android.content.Context;
 import com.ilynn.kaolafm.KaoLaApplication;
 import com.ilynn.kaolafm.bean.Banner;
 import com.ilynn.kaolafm.bean.BroadCastBean;
+import com.ilynn.kaolafm.bean.RadioBean;
 import com.ilynn.kaolafm.bean.Recommend;
 import com.ilynn.kaolafm.bean.TypeMenu;
 import com.ilynn.kaolafm.config.Url;
@@ -71,10 +72,6 @@ public class ApiManager {
     }
 
 
-
-
-
-
     /**
      * 请求欢迎页面广告数据
      *
@@ -86,32 +83,46 @@ public class ApiManager {
 
     /**
      * 请求首页 推荐数据
+     *
      * @return
      */
-    public Observable<Recommend> getRecommend(){
+    public Observable<Recommend> getRecommend() {
         return apiService.getRecommend().compose(RxResultHelper.<Recommend>result());
     }
 
     /**
      * 请求首页 推荐数据
+     *
      * @return
      */
-    public Observable<TypeMenu> getHotType(){
+    public Observable<TypeMenu> getHotType() {
         return apiService.getHotType().compose(RxResultHelper.<TypeMenu>result());
     }
+
     /**
      * 请求首页 推荐数据
+     *
      * @return
      */
-    public Observable<TypeMenu> getOtherType(){
+    public Observable<TypeMenu> getOtherType() {
         return apiService.getOtherType().compose(RxResultHelper.<TypeMenu>result());
     }
 
     /**
      * 请求首页 广播数据
+     *
      * @return
      */
-    public Observable<BroadCastBean> getBroadcast(){
+    public Observable<BroadCastBean> getBroadcast() {
         return apiService.getBroadcast().compose(RxResultHelper.<BroadCastBean>result());
+    }
+
+    /**
+     * 请求首页 主播数据
+     *
+     * @return
+     */
+    public Observable<RadioBean> getRadio() {
+        return apiService.getRadio().compose(RxResultHelper.<RadioBean>result());
     }
 }

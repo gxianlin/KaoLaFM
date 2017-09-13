@@ -1,7 +1,11 @@
 package com.ilynn.kaolafm.ui.fragment;
 
-import com.ilynn.base.BaseFragment;
+import com.ilynn.base.util.LogUtils;
 import com.ilynn.kaolafm.R;
+import com.ilynn.kaolafm.bean.RadioBean;
+import com.ilynn.kaolafm.ui.base.BaseMVPFragment;
+import com.ilynn.kaolafm.ui.presenter.RadioPresenter;
+import com.ilynn.kaolafm.ui.view.RadioView;
 
 /**
  * 描述：发现-主播页面
@@ -11,7 +15,7 @@ import com.ilynn.kaolafm.R;
  * 修改备注：
  * 邮箱：gong.xl@wonhigh.cn
  */
-public class RadioFragment extends BaseFragment {
+public class RadioFragment extends BaseMVPFragment<RadioView, RadioPresenter> implements RadioView {
 
     @Override
     public int getLayoutId() {
@@ -30,6 +34,26 @@ public class RadioFragment extends BaseFragment {
 
     @Override
     public void initData() {
+        mPresenter.loadData();
+    }
 
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void onError(int code, String message) {
+
+    }
+
+    @Override
+    public void onSuccess(RadioBean radioBean) {
+        LogUtils.e(TAG, "onSuccess");
     }
 }

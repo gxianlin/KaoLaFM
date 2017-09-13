@@ -3,6 +3,7 @@ package com.ilynn.kaolafm.api;
 import com.ilynn.kaolafm.bean.Banner;
 import com.ilynn.kaolafm.bean.BaseBean;
 import com.ilynn.kaolafm.bean.BroadCastBean;
+import com.ilynn.kaolafm.bean.RadioBean;
 import com.ilynn.kaolafm.bean.Recommend;
 import com.ilynn.kaolafm.bean.TypeMenu;
 
@@ -13,6 +14,7 @@ import static com.ilynn.kaolafm.config.Url.BANNER;
 import static com.ilynn.kaolafm.config.Url.BROADCAST;
 import static com.ilynn.kaolafm.config.Url.HOT_TYPE;
 import static com.ilynn.kaolafm.config.Url.OTHER_TYPE;
+import static com.ilynn.kaolafm.config.Url.RADIO;
 import static com.ilynn.kaolafm.config.Url.RECOMMEND;
 
 /**
@@ -39,4 +41,7 @@ public interface ApiService {
 
     @GET(BROADCAST)
     Observable<BaseBean<BroadCastBean>> getBroadcast();
+
+    @GET(RADIO)
+    Observable<BaseBean<RadioBean>> getRadio();
 }

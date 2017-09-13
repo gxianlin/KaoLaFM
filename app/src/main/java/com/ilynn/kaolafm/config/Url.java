@@ -10,6 +10,7 @@ package com.ilynn.kaolafm.config;
  */
 
 public interface Url {
+
     String BASE_URL = "http://api.kaolafm.com/api/v4/";
 
     String MENU_TAB = "4.7.1/navigate/list";
