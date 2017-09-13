@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.ilynn.base.util.LogUtils;
+import com.ilynn.base.util.StatusBarUtil;
+
+import butterknife.ButterKnife;
 
 /**
  * 描述：通用基础activity
@@ -55,10 +58,15 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mViews = new SparseArray<>();
         setContentView(getLayoutId());
+        setStatusBar();
+        ButterKnife.inject(this);
         receiveData();
         initViews();
         setListener();
         initData();
+    }
+    protected void setStatusBar() {
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.head_bg),0);
     }
 
     /**

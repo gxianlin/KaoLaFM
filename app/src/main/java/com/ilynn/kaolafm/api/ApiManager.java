@@ -4,8 +4,10 @@ import android.content.Context;
 
 import com.ilynn.kaolafm.KaoLaApplication;
 import com.ilynn.kaolafm.bean.Banner;
-
-import java.util.Map;
+import com.ilynn.kaolafm.bean.BroadCastBean;
+import com.ilynn.kaolafm.bean.Recommend;
+import com.ilynn.kaolafm.bean.TypeMenu;
+import com.ilynn.kaolafm.config.Url;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -32,7 +34,7 @@ public class ApiManager {
         mContext = context;
 
         mRetrofit = new Retrofit.Builder()
-                .baseUrl(ApiService.BASE_URL)        //设置访问环境
+                .baseUrl(Url.BASE_URL)        //设置访问环境
                 .client(OkHttpClientManager.getClinet(mContext))
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -41,6 +43,7 @@ public class ApiManager {
         if (apiService == null) {
             apiService = mRetrofit.create(ApiService.class);
         }
+
     }
 
     /**
@@ -73,12 +76,42 @@ public class ApiManager {
 
 
     /**
-     * 请求销售总览页面数据
+     * 请求欢迎页面广告数据
      *
-     * @param map 请求参数
      * @return
      */
     public Observable<Banner> getBanner() {
         return apiService.getBanner().compose(RxResultHelper.<Banner>result());
+    }
+
+    /**
+     * 请求首页 推荐数据
+     * @return
+     */
+    public Observable<Recommend> getRecommend(){
+        return apiService.getRecommend().compose(RxResultHelper.<Recommend>result());
+    }
+
+    /**
+     * 请求首页 推荐数据
+     * @return
+     */
+    public Observable<TypeMenu> getHotType(){
+        return apiService.getHotType().compose(RxResultHelper.<TypeMenu>result());
+    }
+    /**
+     * 请求首页 推荐数据
+     * @return
+     */
+    public Observable<TypeMenu> getOtherType(){
+        return apiService.getOtherType().compose(RxResultHelper.<TypeMenu>result());
+    }
+
+    /**
+     * 请求首页 广播数据
+     * @return
+     */
+    public Observable<BroadCastBean> getBroadcast(){
+        return apiService.getBroadcast().compose(RxResultHelper.<BroadCastBean>result());
     }
 }

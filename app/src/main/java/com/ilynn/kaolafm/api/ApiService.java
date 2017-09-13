@@ -2,9 +2,18 @@ package com.ilynn.kaolafm.api;
 
 import com.ilynn.kaolafm.bean.Banner;
 import com.ilynn.kaolafm.bean.BaseBean;
+import com.ilynn.kaolafm.bean.BroadCastBean;
+import com.ilynn.kaolafm.bean.Recommend;
+import com.ilynn.kaolafm.bean.TypeMenu;
 
 import retrofit2.http.GET;
 import rx.Observable;
+
+import static com.ilynn.kaolafm.config.Url.BANNER;
+import static com.ilynn.kaolafm.config.Url.BROADCAST;
+import static com.ilynn.kaolafm.config.Url.HOT_TYPE;
+import static com.ilynn.kaolafm.config.Url.OTHER_TYPE;
+import static com.ilynn.kaolafm.config.Url.RECOMMEND;
 
 /**
  * 描述：TODO
@@ -15,12 +24,19 @@ import rx.Observable;
  * 邮箱：gong.xl@wonhigh.cn
  */
 public interface ApiService {
-    String BASE_URL = "http://api.kaolafm.com/api/v4/";
-
-    String MENU_TAB = "4.7.1/navigate/list";
-
-    String BANNER = "splashscreen/list?resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&";
 
     @GET(BANNER)
     Observable<BaseBean<Banner>> getBanner();
+
+    @GET(RECOMMEND)
+    Observable<BaseBean<Recommend>> getRecommend();
+
+    @GET(HOT_TYPE)
+    Observable<BaseBean<TypeMenu>> getHotType();
+
+    @GET(OTHER_TYPE)
+    Observable<BaseBean<TypeMenu>> getOtherType();
+
+    @GET(BROADCAST)
+    Observable<BaseBean<BroadCastBean>> getBroadcast();
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tab_names">
+        <item>推荐</item>
+        <item>分类</item>
+        <item>广播</item>
+        <item>主播</item>
+    </string-array>
+</resources>

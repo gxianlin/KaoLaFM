@@ -1,6 +1,5 @@
 package com.ilynn.kaolafm.ui.base;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -18,7 +17,7 @@ import java.lang.reflect.ParameterizedType;
  * 邮箱：gong.xl@wonhigh.cn
  */
 public abstract class BaseMVPActivity<V extends IView, P extends BasePresenter<V>>
-        extends BaseActivity implements IView {
+        extends BaseActivity {
     public P mPresenter;
 
     @Override
@@ -26,11 +25,6 @@ public abstract class BaseMVPActivity<V extends IView, P extends BasePresenter<V
         mPresenter = getInstance(this);
         mPresenter.attachView((V) this);
         super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public Context getContext() {
-        return this;
     }
 
     @Override

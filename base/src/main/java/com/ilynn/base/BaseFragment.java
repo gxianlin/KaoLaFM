@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.ilynn.base.util.LogUtils;
 
+import butterknife.ButterKnife;
+
 /**
  * 描述：通用基础fragmnet
  * 作者：gong.xl
@@ -71,6 +73,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         if (contentView == null) {
             contentView = inflater.inflate(getLayoutId(), container, false);
         }
+        ButterKnife.inject(this, contentView);
         initViews();
         isInitView = true;
         lazyLoad();
@@ -209,6 +212,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        ButterKnife.reset(this);
         LogUtils.d(TAG,"onDestroyView()");
     }
 

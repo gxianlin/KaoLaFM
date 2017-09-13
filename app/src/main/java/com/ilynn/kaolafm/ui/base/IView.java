@@ -1,7 +1,5 @@
 package com.ilynn.kaolafm.ui.base;
 
-import android.content.Context;
-
 /**
  * 描述：mvp view
  * 作者：gong.xl
@@ -12,8 +10,6 @@ import android.content.Context;
  */
 
 public interface IView {
-    Context getContext();
-
     /**
      * 显示加载动画
      */
@@ -30,5 +26,5 @@ public interface IView {
      * @param code    返回码
      * @param message 错误信息
      */
-    void showFail(int code, String message);
+    void onError(int code, String message);
 }
