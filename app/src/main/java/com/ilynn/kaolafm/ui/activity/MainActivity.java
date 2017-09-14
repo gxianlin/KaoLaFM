@@ -18,7 +18,15 @@ import java.util.ArrayList;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-
+/**
+ * 描述：主页面
+ * <p>
+ * 作者：gong.xl
+ * 创建日期：2017/9/10 下午5:05
+ * 修改日期: 2017/9/10
+ * 修改备注：
+ * 邮箱：gong.xl@wonhigh.cn
+ */
 public class MainActivity extends BaseActivity {
 
     @InjectView(R.id.bar_music)
@@ -53,6 +61,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initData() {
         setCustomViewPager();
+
     }
 
     @Override
@@ -128,27 +137,27 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-//    /**
-//     * 双击返回桌面
-//     *
-//     * @param keyCode
-//     * @param event
-//     * @return
-//     */
-//    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        if (keyCode == KeyEvent.KEYCODE_BACK) {
-//            if (System.currentTimeMillis() - time > 1000) {
-//                Toast.makeText(this, "再按一次返回桌面", Toast.LENGTH_SHORT).show();
-//                time = System.currentTimeMillis();
-//            } else {
-//                Intent intent = new Intent(Intent.ACTION_MAIN);
-//                intent.addCategory(Intent.CATEGORY_HOME);
-//                startActivity(intent);
-//            }
-//            return true;
-//        } else {
-//            return super.onKeyDown(keyCode, event);
-//        }
-//    }
+    //    /**
+    //     * 双击返回桌面
+    //     *
+    //     * @param keyCode
+    //     * @param event
+    //     * @return
+    //     */
+    //    @Override
+    //    public boolean onKeyDown(int keyCode, KeyEvent event) {
+    //        if (keyCode == KeyEvent.KEYCODE_BACK) {
+    //            if (System.currentTimeMillis() - time > 1000) {
+    //                Toast.makeText(this, "再按一次返回桌面", Toast.LENGTH_SHORT).show();
+    //                time = System.currentTimeMillis();
+    //            } else {
+    //                Intent intent = new Intent(Intent.ACTION_MAIN);
+    //                intent.addCategory(Intent.CATEGORY_HOME);
+    //                startActivity(intent);
+    //            }
+    //            return true;
+    //        } else {
+    //            return super.onKeyDown(keyCode, event);
+    //        }
+    //    }
 }

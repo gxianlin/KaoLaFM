@@ -1,7 +1,11 @@
 package com.ilynn.kaolafm.ui.view;
 
-import com.ilynn.kaolafm.bean.RadioBean;
+import com.ilynn.kaolafm.bean.DataListBean;
+import com.ilynn.kaolafm.bean.RadioHost;
+import com.ilynn.kaolafm.bean.Special;
 import com.ilynn.kaolafm.ui.base.IView;
+
+import java.util.List;
 
 /**
  * 描述：TODO
@@ -12,5 +16,21 @@ import com.ilynn.kaolafm.ui.base.IView;
  * 邮箱：gong.xl@wonhigh.cn
  */
 public interface RadioView extends IView{
-    void onSuccess(RadioBean radioBean);
+    /**
+     * 轮播图
+     * @param bannerList
+     */
+    void onSuccessBanner(List<Special> bannerList);
+
+    /**
+     * 滚动文字
+     * @param textList
+     */
+    void onSuccessMessage(List<Special> textList);
+
+    /**
+     * 主播列表
+     * @param radioList
+     */
+    void onSuccessRadio(List<DataListBean<List<RadioHost>>> radioList);
 }

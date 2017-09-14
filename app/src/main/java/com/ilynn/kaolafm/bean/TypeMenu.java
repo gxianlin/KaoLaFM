@@ -3,7 +3,7 @@ package com.ilynn.kaolafm.bean;
 import java.util.List;
 
 /**
- * 描述：TODO
+ * 描述：分类页面数据实体
  * 作者：gong.xl
  * 创建日期：2017/9/13 下午2:28
  * 修改日期: 2017/9/13
