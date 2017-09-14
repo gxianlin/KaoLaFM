@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/menu_title_height">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:text="这是标题"
+        android:paddingLeft="@dimen/title_paddingLeft"
+        android:textSize="@dimen/title_text_size"
+        android:textColor="@color/text_color_1"
+        />
+    <TextView
+        android:id="@+id/title_change"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:gravity="center_vertical"
+        android:text="@string/title_change"
+        android:textColor="@color/text_color_3"
+        android:paddingRight="@dimen/title_paddingLeft"
+        android:drawableLeft="@drawable/title_more"/>
+</RelativeLayout>
+<ListView
+    android:id="@+id/listview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+</LinearLayout>

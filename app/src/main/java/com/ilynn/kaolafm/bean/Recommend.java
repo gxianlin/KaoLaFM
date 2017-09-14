@@ -1,5 +1,7 @@
 package com.ilynn.kaolafm.bean;
 
+import com.chad.library.adapter.base.entity.MultiItemEntity;
+
 import java.util.List;
 
 /**

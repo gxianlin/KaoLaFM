@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
  * 邮箱：gong.xl@wonhigh.cn
  */
 
-public abstract class BaseFragment extends Fragment implements View.OnClickListener{
+public abstract class BaseFragment extends Fragment implements View.OnClickListener {
     protected final String TAG = BaseFragment.class.getSimpleName();
     protected Context mContext;
 
@@ -34,8 +34,10 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     private boolean isFirstLoad = true;
     protected View contentView;
     private SparseArray<View> mViews;
+
     /**
      * 绑定布局文件
+     *
      * @return
      */
     public abstract int getLayoutId();
@@ -59,7 +61,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LogUtils.d(TAG,"onCreate()");
+        LogUtils.d(TAG, "onCreate()");
         receiveData();
         mContext = getContext();
     }
@@ -68,7 +70,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        LogUtils.d(TAG,"onCreateView()");
+        LogUtils.d(TAG, "onCreateView()");
         mViews = new SparseArray<>();
         if (contentView == null) {
             contentView = inflater.inflate(getLayoutId(), container, false);
@@ -127,6 +129,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         }
         return view;
     }
+
     /***
      * 跳转页面
      */
@@ -134,6 +137,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         Intent intent = new Intent(getActivity(), activity);
         startActivity(intent);
     }
+
     /**
      * 显示Snackbar
      *
@@ -154,9 +158,14 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         Snackbar.make(view, resID, Snackbar.LENGTH_SHORT).show();
     }
 
-    public void showToast(int toastRes){
+    public void showToast(int toastRes) {
         Toast.makeText(mContext, getString(toastRes), Toast.LENGTH_SHORT).show();
     }
+
+    public void showToast(String msg) {
+        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+    }
+
     /**
      * 设置view的点击事件
      *
@@ -178,6 +187,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     /**
      * 点击事件
+     *
      * @param v
      */
     @Override
@@ -188,37 +198,37 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onStart() {
         super.onStart();
-        LogUtils.d(TAG,"onStart()");
+        LogUtils.d(TAG, "onStart()");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        LogUtils.d(TAG,"onResume()");
+        LogUtils.d(TAG, "onResume()");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        LogUtils.d(TAG,"onPause()");
+        LogUtils.d(TAG, "onPause()");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        LogUtils.d(TAG,"onStop()");
+        LogUtils.d(TAG, "onStop()");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
-        LogUtils.d(TAG,"onDestroyView()");
+        LogUtils.d(TAG, "onDestroyView()");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        LogUtils.d(TAG,"onDestroy()");
+        LogUtils.d(TAG, "onDestroy()");
     }
 }
