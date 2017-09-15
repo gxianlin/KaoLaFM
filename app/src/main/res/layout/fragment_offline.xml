@@ -1,6 +1,8 @@
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/recyclerview"
+<TextView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recyclerview"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent"
+    android:text="离线"
+    android:gravity="center"/>

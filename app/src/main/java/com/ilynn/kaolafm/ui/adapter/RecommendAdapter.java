@@ -23,7 +23,7 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<DataListBean<Lis
 
     public RecommendAdapter(List<DataListBean<List<Special>>> data) {
         super(data);
-//        addItemType(LayoutType.BANNER, R.layout.layout_header_bannder);
+        addItemType(LayoutType.BANNER, R.layout.layout_header_bannder);
         addItemType(LayoutType.ENTRY, R.layout.layout_entry);
         addItemType(LayoutType.SECTION_SQUARE, R.layout.layout_section_square);
         addItemType(LayoutType.SECTION_VERTICAL, R.layout.layout_section_vertical);

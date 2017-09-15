@@ -23,7 +23,7 @@ public class RadioFragment extends BaseMVPFragment<RadioView, RadioPresenter> im
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_offline;
+        return R.layout.fragment_radio;
     }
 
     @Override

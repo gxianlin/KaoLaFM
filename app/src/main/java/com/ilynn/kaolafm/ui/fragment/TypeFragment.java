@@ -19,7 +19,7 @@ public class TypeFragment extends BaseMVPFragment<TypeView,TypePresenter> implem
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_offline;
+        return R.layout.fragment_type;
     }
 
     @Override

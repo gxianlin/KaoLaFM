@@ -2,6 +2,7 @@ package com.ilynn.base;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -65,8 +66,14 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         setListener();
         initData();
     }
+
     protected void setStatusBar() {
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.head_bg),0);
+        //设置状态栏字体颜色为深色
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+        //设置状态栏背景为白色
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.white), 0);
     }
 
     /**

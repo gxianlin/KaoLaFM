@@ -7,70 +7,34 @@
     android:layout_height="match_parent"
     tools:context="com.ilynn.kaolafm.ui.activity.MainActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    <LinearLayout
+        android:id="@+id/main_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/title_height"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@color/head_bg"
-        android:fitsSystemWindows="true"
-        app:contentInsetStart="0.0dp"
-        app:layout_scrollFlags="enterAlways|scroll">
-
-        <RelativeLayout
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/main_btn_bg">
+        <android.support.design.widget.TabLayout
+            android:id="@+id/main_tablayout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/title_height">
+            android:layout_height="wrap_content"
 
-            <ImageView
-                android:id="@+id/bar_music"
-                android:layout_width="55dp"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:background="@drawable/actionbar_offline"
-                android:clickable="true"/>
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            app:tabGravity="fill"
+            app:tabBackground="@android:color/transparent"
+            app:tabIndicatorHeight="0dp"
+            app:tabMode="fixed"
+            android:background="#fff"
+            app:tabSelectedTextColor="@color/btn_color"
+            app:tabTextColor="@color/selector_text_color" />
+    </LinearLayout>
 
-            <ImageView
-                android:id="@+id/bar_offline"
-                android:layout_width="55dp"
-                android:layout_height="match_parent"
-                android:layout_toLeftOf="@+id/bar_music"
-                android:background="@drawable/actionbar_discover"
-                android:clickable="true"/>
-
-            <ImageView
-                android:id="@+id/bar_mine"
-                android:layout_width="55dp"
-                android:layout_height="match_parent"
-                android:layout_toRightOf="@+id/bar_music"
-                android:background="@drawable/actionbar_mine"
-                android:clickable="true"/>
-
-            <ImageView
-                android:id="@+id/bar_search"
-                android:layout_width="23dp"
-                android:layout_height="23dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/actionbar_seek"
-                android:scaleType="center"/>
-        </RelativeLayout>
-    </android.support.v7.widget.Toolbar>
-
-    <FrameLayout
-        android:id="@+id/bottom_container"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/text_color_3"
-        android:layout_alignParentBottom="true"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/main_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_container"
-        android:layout_below="@+id/toolbar"/>
+        android:layout_above="@+id/main_layout"/>
 
 </RelativeLayout>

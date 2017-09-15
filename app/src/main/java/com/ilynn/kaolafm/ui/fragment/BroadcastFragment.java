@@ -24,7 +24,7 @@ public class BroadcastFragment extends BaseMVPFragment<BroadcastView, BroadcastP
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_offline;
+        return R.layout.fragment_broadcast;
     }
 
     @Override
