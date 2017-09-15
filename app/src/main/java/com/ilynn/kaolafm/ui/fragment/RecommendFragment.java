@@ -10,7 +10,6 @@ import com.ilynn.kaolafm.bean.DataListBean;
 import com.ilynn.kaolafm.bean.Recommend;
 import com.ilynn.kaolafm.bean.Special;
 import com.ilynn.kaolafm.config.LayoutType;
-import com.ilynn.kaolafm.ui.activity.PlayActivity;
 import com.ilynn.kaolafm.ui.adapter.RecommendAdapter;
 import com.ilynn.kaolafm.ui.base.BaseMVPFragment;
 import com.ilynn.kaolafm.ui.presenter.RecommendPresenter;
@@ -84,7 +83,6 @@ public class RecommendFragment extends BaseMVPFragment<RecommendView, RecommendP
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 showToast("onClick" + position);
-                startToActivity(PlayActivity.class);
             }
         });
         mRecyclerview.setAdapter(adapter);

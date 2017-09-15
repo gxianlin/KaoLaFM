@@ -1,5 +1,7 @@
 package com.ilynn.kaolafm.ui.adapter;
 
+import android.support.v4.view.ViewPager;
+
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.ilynn.kaolafm.R;
@@ -35,6 +37,9 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<DataListBean<Lis
         switch (helper.getItemViewType()) {
             case LayoutType.BANNER:
                 //轮播图
+                ViewPager viewpager = helper.getView(R.id.header_viewpager);
+                viewpager.setAdapter(new BannerPageAdapter(mContext, item));
+                viewpager.setCurrentItem(Integer.MAX_VALUE / 2);//默认在中间，使用户看不到边界
                 break;
             case LayoutType.ENTRY:
                 //快捷入口
