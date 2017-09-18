@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="wrap_content"
               android:background="@color/white"
               android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/menu_title_height">
+        <TextView
+            android:layout_width="4dp"
+            android:layout_height="15dp"
+            android:background="@color/head_bg"
+            android:layout_centerVertical="true"/>
 
         <TextView
             android:id="@+id/title"
@@ -16,6 +21,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/title_paddingLeft"
             android:text="这是标题"
+            android:textStyle="bold"
             android:textColor="@color/text_color_1"
             android:textSize="@dimen/title_text_size"
             />
@@ -31,9 +37,15 @@
             android:text="@string/title_more"
             android:textColor="@color/text_color_3"/>
     </RelativeLayout>
-    <GridView
+    <com.ilynn.kaolafm.ui.custom.CustomGridView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:horizontalSpacing="5dp"
+        android:verticalSpacing="5dp"
+        android:scrollbars="none"
+        android:listSelector="#00000000"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:numColumns="3"/>
 </LinearLayout>

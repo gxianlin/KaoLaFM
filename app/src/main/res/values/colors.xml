@@ -5,12 +5,18 @@
     <color name="colorAccent">#FF4081</color>
     
     <color name="white">#ffffff</color>
+    <color name="green">#1fc5a8</color>
     <color name="line">#e6e6e6</color>
+
+    <!--页面灰色背景色-->
+    <color name="page_bg">#f6f6f6</color>
+
 
     <!--主题颜色-->
     <color name="head_bg">#eb4d50</color>
     <color name="btn_color">#F4353E</color>
 
+    <!--文字颜色-->
     <color name="text_color_1">#414141</color>
     <color name="text_color_2">#5f5f5f</color>
     <color name="text_color_3">#a0a0a0</color>

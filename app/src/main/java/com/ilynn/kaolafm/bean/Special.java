@@ -59,7 +59,7 @@ public class Special {
     private int isSubscribe;
     private Object callback;
     private List<?> host;
-    private List<?> reportUrl;
+    private List<String> reportUrl;
     private List<?> expoUrl;
     private List<?> dataList;
 
@@ -247,11 +247,11 @@ public class Special {
         this.host = host;
     }
 
-    public List<?> getReportUrl() {
+    public List<String> getReportUrl() {
         return reportUrl;
     }
 
-    public void setReportUrl(List<?> reportUrl) {
+    public void setReportUrl(List<String> reportUrl) {
         this.reportUrl = reportUrl;
     }
 

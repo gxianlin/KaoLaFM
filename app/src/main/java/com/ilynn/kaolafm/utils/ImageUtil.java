@@ -41,6 +41,7 @@ public class ImageUtil {
                         imageView.setImageDrawable(errorDrawable);
                     }
                 });
-
     }
+
+
 }

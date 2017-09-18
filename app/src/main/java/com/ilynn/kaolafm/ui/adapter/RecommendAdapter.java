@@ -1,7 +1,13 @@
 package com.ilynn.kaolafm.ui.adapter;
 
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.ListView;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.ilynn.kaolafm.R;
@@ -43,16 +49,41 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<DataListBean<Lis
                 break;
             case LayoutType.ENTRY:
                 //快捷入口
+                RecyclerView entry_rv = helper.getView(R.id.entry_rv);
+                entry_rv.setAdapter(new EntryAdapter(item.getDataList(), entry_rv));
                 break;
             case LayoutType.SECTION_SQUARE:
-                //栏目
+                //标题名称
                 helper.setText(R.id.title, item.getName());
+                //是否显示 "更多"按钮
+                if (item.getHasmore() == 1) {
+                    helper.getView(R.id.title_more).setVisibility(View.VISIBLE);
+                } else {
+                    helper.getView(R.id.title_more).setVisibility(View.GONE);
+                }
+                GridView gv = helper.getView(R.id.gridview);
+                gv.setAdapter(new SpecialAdapter(mContext, item.getDataList()));
                 break;
             case LayoutType.SECTION_VERTICAL:
                 //猜你喜欢
+                ListView lv = helper.getView(R.id.listview);
+                lv.setAdapter(new GuessAdapter(mContext, item.getDataList()));
                 break;
             case LayoutType.SECTION_MENU:
                 //三个菜单入口
+                helper.setText(R.id.tv_1, item.getDataList().get(0).getRname());
+                helper.setText(R.id.tv_2, item.getDataList().get(1).getRname());
+                helper.setText(R.id.tv_3, item.getDataList().get(2).getRname());
+                Glide.with(mContext)
+                        .load(item.getDataList().get(0).getPic())
+                        .into((ImageView) helper.getView(R.id.iv_1));
+                Glide.with(mContext)
+                        .load(item.getDataList().get(1).getPic())
+                        .into((ImageView) helper.getView(R.id.iv_2));
+                Glide.with(mContext)
+                        .load(item.getDataList().get(2).getPic())
+                        .into((ImageView) helper.getView(R.id.iv_3));
+
                 break;
             default:
                 break;

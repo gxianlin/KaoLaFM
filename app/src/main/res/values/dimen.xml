@@ -15,7 +15,7 @@
     <dimen name="header_banner_height">200dp</dimen>
 
     <!--推荐快捷入口栏高度-->
-    <dimen name="entry_height">100dp</dimen>
+    <dimen name="entry_height">80dp</dimen>
 
     <!--分组标题栏高度-->
     <dimen name="menu_title_height">40dp</dimen>
@@ -23,6 +23,8 @@
     <dimen name="title_paddingLeft">10dp</dimen>
     <!--分组标题文字大小-->
     <dimen name="title_text_size">16sp</dimen>
+    <dimen name="name_text_size">13sp</dimen>
+    <dimen name="type_text_size">11sp</dimen>
 
     <!--推荐页面 菜单入口栏高度-->
     <dimen name="layout_menu_height">100dp</dimen>

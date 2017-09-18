@@ -1,10 +1,12 @@
 package com.ilynn.kaolafm.ui.fragment;
 
+import android.graphics.Rect;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.ilynn.base.util.DensityUtil;
 import com.ilynn.kaolafm.R;
 import com.ilynn.kaolafm.bean.DataListBean;
 import com.ilynn.kaolafm.bean.Recommend;
@@ -15,6 +17,7 @@ import com.ilynn.kaolafm.ui.base.BaseMVPFragment;
 import com.ilynn.kaolafm.ui.presenter.RecommendPresenter;
 import com.ilynn.kaolafm.ui.view.RecommendView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.InjectView;
@@ -27,10 +30,16 @@ import butterknife.InjectView;
  * 修改备注：
  * 邮箱：gong.xl@wonhih.cn
  */
-public class RecommendFragment extends BaseMVPFragment<RecommendView, RecommendPresenter> implements RecommendView {
+public class RecommendFragment extends BaseMVPFragment<RecommendView, RecommendPresenter> implements RecommendView,
+        SwipeRefreshLayout.OnRefreshListener {
 
     @InjectView(R.id.recyclerview)
     RecyclerView mRecyclerview;
+    @InjectView(R.id.refresh)
+    SwipeRefreshLayout mRefresh;
+    private RecommendAdapter mAdapter;
+
+    List<DataListBean<List<Special>>> mDataList;
 
     @Override
     public int getLayoutId() {
@@ -40,26 +49,30 @@ public class RecommendFragment extends BaseMVPFragment<RecommendView, RecommendP
     @Override
     public void initViews() {
         mRecyclerview.setLayoutManager(new LinearLayoutManager(mContext));
+        mRecyclerview.addItemDecoration(new MyDecoration());
     }
 
     @Override
     public void setListener() {
-
+        mRefresh.setOnRefreshListener(this);
     }
 
     @Override
     public void initData() {
         mPresenter.loadData();
+        mDataList = new ArrayList<>();
+        mAdapter = new RecommendAdapter(mDataList);
+        mRecyclerview.setAdapter(mAdapter);
     }
 
     @Override
     public void showProgress() {
-
+        mRefresh.setRefreshing(true);
     }
 
     @Override
     public void hideProgress() {
-
+        mRefresh.setRefreshing(false);
     }
 
     @Override
@@ -70,6 +83,7 @@ public class RecommendFragment extends BaseMVPFragment<RecommendView, RecommendP
     @Override
     public void onSuccess(Recommend recommend) {
         List<DataListBean<List<Special>>> dataList = recommend.getDataList();
+        mDataList.clear();
         //筛选数据
         for (int i = dataList.size() - 1; i >= 0; i--) {
             int type = dataList.get(i).getItemType();
@@ -78,15 +92,30 @@ public class RecommendFragment extends BaseMVPFragment<RecommendView, RecommendP
                 dataList.remove(i);
             }
         }
-        RecommendAdapter adapter = new RecommendAdapter(dataList);
-        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                showToast("onClick" + position);
-            }
-        });
-        mRecyclerview.setAdapter(adapter);
+        mDataList.addAll(dataList);
+        mAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void onRefresh() {
+        //请求数据
+        mPresenter.loadData();
+    }
 
+    /**
+     * 自定义recycleview分割线
+     */
+    private class MyDecoration extends RecyclerView.ItemDecoration {
+        /**
+         * @param outRect 边界
+         * @param view    recyclerView ItemView
+         * @param parent  recyclerView
+         * @param state   recycler 内部数据管理
+         */
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            //设定底部边距为1px
+            outRect.set(0, 0, 0, DensityUtil.dp2px(10));
+        }
+    }
 }

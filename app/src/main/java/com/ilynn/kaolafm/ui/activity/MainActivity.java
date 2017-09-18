@@ -63,7 +63,7 @@ public class MainActivity extends BaseActivity {
         //设置空按钮不可点击
         LinearLayout child = (LinearLayout) mMainTablayout.getChildAt(0);
         child.getChildAt(2).setClickable(false);
-        initButton();
+//        initButton();
     }
 
 
@@ -154,26 +154,15 @@ public class MainActivity extends BaseActivity {
         wmParams = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_APPLICATION,
+                WindowManager.LayoutParams.TYPE_PHONE,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
-//        wmParams.windowAnimations = 0;
-//        wmParams.type = WindowManager.LayoutParams.TYPE_PHONE;
-//        wmParams.format = PixelFormat.RGBA_8888;//设置背景图片
-//        wmParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams
-//                .FLAG_NOT_FOCUSABLE;//
-        //以屏幕左上角为原点，设置x、y初始值
-//        wmParams.x = getResources().getDisplayMetrics().widthPixels / 2 - 90;
-//        wmParams.y = getResources().getDisplayMetrics().heightPixels;
         //设置悬浮窗口长宽数据
         wmParams.width = DensityUtil.dp2px(55);
         wmParams.height = DensityUtil.dp2px(70);
         createLeftFloatView();
         leftbtn.invalidate();
-
     }
-
-
     /**
      * 创建悬浮按钮
      */
@@ -193,9 +182,10 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+
         if (leftbtn != null && wm != null) {
             wm.removeView(leftbtn);
         }
+        super.onDestroy();
     }
 }
