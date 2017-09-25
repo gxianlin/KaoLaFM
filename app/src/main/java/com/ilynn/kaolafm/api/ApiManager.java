@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 
 /**
- * 描述：TODO
+ * 描述：请求管理类
  * 作者：gong.xl
  * 创建日期：2017/9/12 0012 22:48
  * 修改日期: 2017/9/12 0012

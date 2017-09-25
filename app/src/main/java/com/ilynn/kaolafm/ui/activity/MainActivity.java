@@ -63,13 +63,26 @@ public class MainActivity extends BaseActivity {
         //设置空按钮不可点击
         LinearLayout child = (LinearLayout) mMainTablayout.getChildAt(0);
         child.getChildAt(2).setClickable(false);
-//        initButton();
+        //        initButton();
     }
 
 
     @Override
     public void initData() {
         setCustomViewPager();
+
+
+        //接收携带参数,之前是传递的2
+        int tag = getIntent().getIntExtra("tag", -1);
+        //调用此方法需在viewpager初始化完毕之后
+
+
+
+        if(tag != -1) {
+            //让viewpager选中第三个页面
+            mMainViewpager.setCurrentItem(tag);
+        }
+
     }
 
     @Override
@@ -149,7 +162,7 @@ public class MainActivity extends BaseActivity {
 
     private void initButton() {
         //获取WindowManager
-        wm = (WindowManager)getSystemService(Context.WINDOW_SERVICE);
+        wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         //设置LayoutParams(全局变量）相关参数
         wmParams = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -163,6 +176,7 @@ public class MainActivity extends BaseActivity {
         createLeftFloatView();
         leftbtn.invalidate();
     }
+
     /**
      * 创建悬浮按钮
      */
@@ -187,5 +201,11 @@ public class MainActivity extends BaseActivity {
             wm.removeView(leftbtn);
         }
         super.onDestroy();
+    }
+
+    public void setCurrent(int index) {
+        if (mMainViewpager != null) {
+            mMainViewpager.setCurrentItem(index);
+        }
     }
 }

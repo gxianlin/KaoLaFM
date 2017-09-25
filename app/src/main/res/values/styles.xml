@@ -22,5 +22,9 @@
         <item name="android:activityCloseEnterAnimation">@anim/slide_in_right</item>
         <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
     </style>
-
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="actionMenuTextColor">#ffffff</item> <!--  菜单字体颜色-->
+        <item name="android:textSize">18sp</item> <!-- 菜单字体大小-->
+    </style>
 </resources>

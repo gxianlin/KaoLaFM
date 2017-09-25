@@ -1,12 +1,9 @@
 package com.ilynn.kaolafm.ui.fragment;
 
-import android.graphics.Rect;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
-import com.ilynn.base.util.DensityUtil;
 import com.ilynn.kaolafm.R;
 import com.ilynn.kaolafm.bean.DataListBean;
 import com.ilynn.kaolafm.bean.Recommend;
@@ -14,6 +11,7 @@ import com.ilynn.kaolafm.bean.Special;
 import com.ilynn.kaolafm.config.LayoutType;
 import com.ilynn.kaolafm.ui.adapter.RecommendAdapter;
 import com.ilynn.kaolafm.ui.base.BaseMVPFragment;
+import com.ilynn.kaolafm.ui.custom.RecyclerViewDecoration;
 import com.ilynn.kaolafm.ui.presenter.RecommendPresenter;
 import com.ilynn.kaolafm.ui.view.RecommendView;
 
@@ -49,7 +47,7 @@ public class RecommendFragment extends BaseMVPFragment<RecommendView, RecommendP
     @Override
     public void initViews() {
         mRecyclerview.setLayoutManager(new LinearLayoutManager(mContext));
-        mRecyclerview.addItemDecoration(new MyDecoration());
+        mRecyclerview.addItemDecoration(new RecyclerViewDecoration());
     }
 
     @Override
@@ -100,22 +98,5 @@ public class RecommendFragment extends BaseMVPFragment<RecommendView, RecommendP
     public void onRefresh() {
         //请求数据
         mPresenter.loadData();
-    }
-
-    /**
-     * 自定义recycleview分割线
-     */
-    private class MyDecoration extends RecyclerView.ItemDecoration {
-        /**
-         * @param outRect 边界
-         * @param view    recyclerView ItemView
-         * @param parent  recyclerView
-         * @param state   recycler 内部数据管理
-         */
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            //设定底部边距为1px
-            outRect.set(0, 0, 0, DensityUtil.dp2px(10));
-        }
     }
 }

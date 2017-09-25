@@ -1,5 +1,7 @@
 package com.ilynn.kaolafm.ui.activity;
 
+import android.content.Intent;
+
 import com.ilynn.base.BaseActivity;
 import com.ilynn.kaolafm.R;
 
@@ -25,6 +27,13 @@ public class PlayActivity extends BaseActivity {
 
     @Override
     public void initData() {
+
+
+        //跳转
+        Intent intent = new Intent(this,MainActivity.class);
+        //假设 携带一个int型参数
+        intent.putExtra("tag",2);
+        startActivity(intent);
 
     }
 

@@ -8,7 +8,6 @@ import android.view.ViewParent;
 import android.widget.ImageView;
 
 import com.ilynn.kaolafm.R;
-import com.ilynn.kaolafm.bean.DataListBean;
 import com.ilynn.kaolafm.bean.Special;
 import com.ilynn.kaolafm.utils.ImageUtil;
 
@@ -27,9 +26,8 @@ import java.util.List;
 public class BannerPageAdapter extends PagerAdapter {
     private ArrayList<ImageView> mImageViews;
 
-    public BannerPageAdapter(Context context, DataListBean<List<Special>> item) {
+    public BannerPageAdapter(Context context, List<Special> dataList) {
         mImageViews = new ArrayList<>();
-        List<Special> dataList = item.getDataList();
         for (int i = 0, j = dataList.size(); i < j; i++) {
             ImageView iv = new ImageView(context);
             iv.setScaleType(ImageView.ScaleType.FIT_XY);

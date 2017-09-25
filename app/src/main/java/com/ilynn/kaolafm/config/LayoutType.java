@@ -39,4 +39,9 @@ public class LayoutType {
      * 分组 菜单(专题/活动/商城)
      */
     public static final int SECTION_MENU = 27;
+
+    /**
+     * 滚动文字
+     */
+    public static final int ROLL_TEXT = 31;
 }

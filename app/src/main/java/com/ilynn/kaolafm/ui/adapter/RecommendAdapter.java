@@ -44,7 +44,7 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<DataListBean<Lis
             case LayoutType.BANNER:
                 //轮播图
                 ViewPager viewpager = helper.getView(R.id.header_viewpager);
-                viewpager.setAdapter(new BannerPageAdapter(mContext, item));
+                viewpager.setAdapter(new BannerPageAdapter(mContext, item.getDataList()));
                 viewpager.setCurrentItem(Integer.MAX_VALUE / 2);//默认在中间，使用户看不到边界
                 break;
             case LayoutType.ENTRY:
