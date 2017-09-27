@@ -1,7 +1,7 @@
 package com.ilynn.kaolafm.api;
 
 import com.ilynn.kaolafm.bean.Banner;
-import com.ilynn.kaolafm.bean.BaseBean;
+import com.ilynn.kaolafm.bean.BaseResult;
 import com.ilynn.kaolafm.bean.BroadCastBean;
 import com.ilynn.kaolafm.bean.RadioBean;
 import com.ilynn.kaolafm.bean.Recommend;
@@ -28,20 +28,20 @@ import static com.ilynn.kaolafm.config.Url.RECOMMEND;
 public interface ApiService {
 
     @GET(BANNER)
-    Observable<BaseBean<Banner>> getBanner();
+    Observable<BaseResult<Banner>> getBanner();
 
     @GET(RECOMMEND)
-    Observable<BaseBean<Recommend>> getRecommend();
+    Observable<BaseResult<Recommend>> getRecommend();
 
     @GET(HOT_TYPE)
-    Observable<BaseBean<TypeMenu>> getHotType();
+    Observable<BaseResult<TypeMenu>> getHotType();
 
     @GET(OTHER_TYPE)
-    Observable<BaseBean<TypeMenu>> getOtherType();
+    Observable<BaseResult<TypeMenu>> getOtherType();
 
     @GET(BROADCAST)
-    Observable<BaseBean<BroadCastBean>> getBroadcast();
+    Observable<BaseResult<BroadCastBean>> getBroadcast();
 
     @GET(RADIO)
-    Observable<BaseBean<RadioBean>> getRadio();
+    Observable<BaseResult<RadioBean>> getRadio();
 }

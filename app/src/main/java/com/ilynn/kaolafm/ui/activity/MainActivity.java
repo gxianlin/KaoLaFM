@@ -76,8 +76,6 @@ public class MainActivity extends BaseActivity {
         int tag = getIntent().getIntExtra("tag", -1);
         //调用此方法需在viewpager初始化完毕之后
 
-
-
         if(tag != -1) {
             //让viewpager选中第三个页面
             mMainViewpager.setCurrentItem(tag);

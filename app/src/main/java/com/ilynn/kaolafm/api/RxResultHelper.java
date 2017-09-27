@@ -1,6 +1,6 @@
 package com.ilynn.kaolafm.api;
 
-import com.ilynn.kaolafm.bean.BaseBean;
+import com.ilynn.kaolafm.bean.BaseResult;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -35,20 +35,21 @@ public class RxResultHelper {
         });
     }
 
-    public static <T> Observable.Transformer<BaseBean<T>, T> result() {
-        return new Observable.Transformer<BaseBean<T>, T>() {
+    public static <T> Observable.Transformer<BaseResult<T>, T> result() {
+        return new Observable.Transformer<BaseResult<T>, T>() {
             @Override
-            public Observable<T> call(Observable<BaseBean<T>> baseResponseObservable) {
+            public Observable<T> call(Observable<BaseResult<T>> baseResponseObservable) {
 
                 return baseResponseObservable.flatMap(
-                        new Func1<BaseBean<T>, Observable<T>>() {
+                        new Func1<BaseResult<T>, Observable<T>>() {
                             @Override
-                            public Observable<T> call(BaseBean<T> response) {
+                            public Observable<T> call(BaseResult<T> response) {
                                 //请求成功后，根据返回码转发
                                 switch (response.getCode()) {
                                     //正常数据
                                     case ApiException.SUCCESS:
                                         return createData(response.getResult());
+                                    //其他异常数据可在此处理转发
                                     default:
                                         return Observable.error(new ApiException(response.getCode(), response
                                                 .getMessage()));

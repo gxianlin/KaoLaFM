@@ -35,10 +35,10 @@ public class ApiManager {
         mContext = context;
 
         mRetrofit = new Retrofit.Builder()
-                .baseUrl(Url.BASE_URL)        //设置访问环境
-                .client(OkHttpClientManager.getClinet(mContext))
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .baseUrl(Url.BASE_URL)                              //设置访问环境
+                .client(OkHttpClientManager.getClinet(mContext))    //设置OKhttpclient
+                .addConverterFactory(GsonConverterFactory.create()) //设置Gson解析器
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())   //设置Rajava适配器
                 .build();
 
         if (apiService == null) {

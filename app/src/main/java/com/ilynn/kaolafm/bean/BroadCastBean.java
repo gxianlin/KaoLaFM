@@ -13,7 +13,7 @@ import java.util.List;
  * 邮箱：gong.xl@wonhigh.cn
  */
 
-public class BroadCastBean extends BaseResult {
+public class BroadCastBean extends BaseBean {
 
 
     private List<DataListBean<JsonArray>> dataList;

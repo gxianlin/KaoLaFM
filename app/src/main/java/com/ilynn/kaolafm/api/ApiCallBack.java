@@ -36,17 +36,17 @@ public abstract class ApiCallBack<M> extends Subscriber<M> {
     public ApiCallBack() {
         mType = getSuperClassTypeParameter(this.getClass());
 
+        //泛型M类型为Bean (class)
         if (mType instanceof Class) {
             clazz = (Class<M>) mType;
             LogUtils.i(TAG, "class = " + clazz.getSimpleName() + " + " + clazz.getName() + " + " + clazz
                     .getCanonicalName());
-        } else if (mType instanceof ParameterizedType) {
+        }
+        //泛型M类型为 Array<Bean>
+        else if (mType instanceof ParameterizedType) {
             ParameterizedType type = (ParameterizedType) mType;
             Type[] actualTypeArguments = type.getActualTypeArguments();
             clazz = (Class<M>) actualTypeArguments[0];
-            LogUtils.i(TAG, "ArrayList<Class> = " + clazz.getSimpleName() + " + " + clazz.getName() +
-                    " + " + clazz
-                    .getCanonicalName());
         }
     }
 
@@ -86,6 +86,7 @@ public abstract class ApiCallBack<M> extends Subscriber<M> {
 
     @Override
     public void onNext(M m) {
+        //TODO 可在此检测数据是否是正常数据,再进行转发
         onSuccess(m);
     }
 
@@ -97,6 +98,7 @@ public abstract class ApiCallBack<M> extends Subscriber<M> {
     @Override
     public void onError(Throwable e) {
 
+        //TODO 区分异常类型
         onFailure(1, e.getMessage());
         onFinished();
     }

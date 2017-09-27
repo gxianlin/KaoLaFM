@@ -1,7 +1,5 @@
 package com.ilynn.kaolafm.bean;
 
-import com.chad.library.adapter.base.entity.MultiItemEntity;
-
 import java.util.List;
 
 /**
@@ -13,7 +11,7 @@ import java.util.List;
  * 邮箱：gong.xl@wonhigh.cn
  */
 
-public class Recommend extends BaseResult {
+public class Recommend extends BaseBean {
 
     private List<DataListBean<List<Special>>> dataList;
 

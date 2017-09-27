@@ -1,48 +1,25 @@
 package com.ilynn.kaolafm.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * 描述：TODO
  * 作者：gong.xl
- * 创建日期：2017/9/12 0012 22:40
- * 修改日期: 2017/9/12 0012
+ * 创建日期：2017/9/13 下午1:32
+ * 修改日期: 2017/9/13
  * 修改备注：
  * 邮箱：gong.xl@wonhigh.cn
  */
-public class BaseBean<T> {
-    private String code;
-    private String message;
-    private T result;
-    private long serverTime;
 
-    public String getCode() {
-        return code;
+public class BaseBean implements Parcelable {
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public long getServerTime() {
-        return serverTime;
-    }
-
-    public void setServerTime(long serverTime) {
-        this.serverTime = serverTime;
-    }
-
-    public T getResult() {
-        return result;
-    }
-
-    public void setResult(T result) {
-        this.result = result;
     }
 }

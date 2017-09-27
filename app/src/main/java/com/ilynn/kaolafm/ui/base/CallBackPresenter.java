@@ -1,7 +1,7 @@
 package com.ilynn.kaolafm.ui.base;
 
 import com.ilynn.kaolafm.api.ApiCallBack;
-import com.ilynn.kaolafm.bean.BaseResult;
+import com.ilynn.kaolafm.bean.BaseBean;
 
 import rx.Observable;
 
@@ -16,7 +16,7 @@ import rx.Observable;
  * 邮箱：gong.xl@wonhigh.cn
  */
 
-public abstract class CallBackPresenter<V extends IView, M extends BaseResult> extends BasePresenter<V> {
+public abstract class CallBackPresenter<V extends IView, M extends BaseBean> extends BasePresenter<V> {
     /**
      * 请求数据
      * @return

@@ -8,7 +8,7 @@ package com.ilynn.kaolafm.bean;
  * 修改备注：
  * 邮箱：gong.xl@wonhigh.cn
  */
-public class Banner extends BaseResult{
+public class Banner extends BaseBean {
 
     /**
      * showTime : 3

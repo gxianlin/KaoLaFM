@@ -12,7 +12,7 @@ import java.util.List;
  * 修改备注：
  * 邮箱：gong.xl@wonhigh.cn
  */
-public class RadioBean extends BaseResult {
+public class RadioBean extends BaseBean {
 
     private List<DataListBean<JsonArray>> dataList;
 
