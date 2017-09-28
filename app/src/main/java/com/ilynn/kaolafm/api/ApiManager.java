@@ -10,6 +10,8 @@ import com.ilynn.kaolafm.bean.Recommend;
 import com.ilynn.kaolafm.bean.TypeMenu;
 import com.ilynn.kaolafm.config.Url;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -124,5 +126,10 @@ public class ApiManager {
      */
     public Observable<RadioBean> getRadio() {
         return apiService.getRadio().compose(RxResultHelper.<RadioBean>result());
+    }
+
+
+    public Call<ResponseBody> getBody(){
+        return apiService.getBody();
     }
 }

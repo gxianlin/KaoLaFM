@@ -57,7 +57,7 @@ public class RadioFragment extends BaseMVPFragment<RadioView, RadioPresenter> im
 
     @Override
     public void initData() {
-        mPresenter.loadData();
+        mPresenter.loadData(mParams,true);
         //        mRadioList = new ArrayList<>();
         //        mRadioAdapter = new RadioAdapter(mRadioList);
         //        mRecyclerview.setAdapter(mRadioAdapter);
@@ -106,6 +106,6 @@ public class RadioFragment extends BaseMVPFragment<RadioView, RadioPresenter> im
 
     @Override
     public void onRefresh() {
-        mPresenter.loadData();
+        mPresenter.loadData(mParams,false);
     }
 }

@@ -48,7 +48,7 @@ public class BroadcastFragment extends BaseMVPFragment<BroadcastView, BroadcastP
 
     @Override
     public void initData() {
-        mPresenter.loadData();
+        mPresenter.loadData(mParams,true);
     }
 
     @Override

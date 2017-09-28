@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.ilynn.base.BaseFragment;
+import com.ilynn.kaolafm.api.RequestParams;
 
 import java.lang.reflect.ParameterizedType;
 
@@ -19,12 +20,14 @@ import java.lang.reflect.ParameterizedType;
 public abstract class BaseMVPFragment<V extends IView, P extends BasePresenter<V>> extends
         BaseFragment implements IView {
     public P mPresenter;
+    public RequestParams mParams;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter = getInstance(this, 1);
         mPresenter.attachView((V) this);
+        mParams = new RequestParams(getClass().getSimpleName());
     }
 
 

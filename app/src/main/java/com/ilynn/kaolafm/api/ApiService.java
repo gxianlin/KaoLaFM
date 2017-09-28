@@ -7,6 +7,8 @@ import com.ilynn.kaolafm.bean.RadioBean;
 import com.ilynn.kaolafm.bean.Recommend;
 import com.ilynn.kaolafm.bean.TypeMenu;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
 import retrofit2.http.GET;
 import rx.Observable;
 
@@ -44,4 +46,7 @@ public interface ApiService {
 
     @GET(RADIO)
     Observable<BaseResult<RadioBean>> getRadio();
+
+    @GET(BANNER)
+    Call<ResponseBody> getBody();
 }

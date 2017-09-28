@@ -1,6 +1,7 @@
 package com.ilynn.kaolafm.bean;
 
 import com.google.gson.JsonArray;
+import com.ilynn.kaolafm.cache.BaseCache;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * 邮箱：gong.xl@wonhigh.cn
  */
 
-public class BroadCastBean extends BaseBean {
+public class BroadCastBean extends BaseCache {
 
 
     private List<DataListBean<JsonArray>> dataList;

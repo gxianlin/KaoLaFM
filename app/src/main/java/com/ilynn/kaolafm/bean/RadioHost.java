@@ -1,9 +1,11 @@
 package com.ilynn.kaolafm.bean;
 
+import com.ilynn.kaolafm.cache.BaseCache;
+
 /**
  * 主播信息 bean
  */
-public class RadioHost {
+public class RadioHost extends BaseCache{
     private int uid;
     private String nickName;
     private String avatar;

@@ -1,5 +1,7 @@
 package com.ilynn.kaolafm.bean;
 
+import com.ilynn.kaolafm.cache.BaseCache;
+
 import java.util.List;
 
 /**
@@ -11,7 +13,7 @@ import java.util.List;
  * 邮箱：gong.xl@wonhigh.cn
  */
 
-public class Recommend extends BaseBean {
+public class Recommend extends BaseCache {
 
     private List<DataListBean<List<Special>>> dataList;
 

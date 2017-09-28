@@ -3,6 +3,7 @@ package com.ilynn.kaolafm.ui.fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.ilynn.kaolafm.R;
 import com.ilynn.kaolafm.bean.DataListBean;
@@ -57,7 +58,7 @@ public class RecommendFragment extends BaseMVPFragment<RecommendView, RecommendP
 
     @Override
     public void initData() {
-        mPresenter.loadData();
+        mPresenter.loadData(mParams,true);
         mDataList = new ArrayList<>();
         mAdapter = new RecommendAdapter(mDataList);
         mRecyclerview.setAdapter(mAdapter);
@@ -81,6 +82,7 @@ public class RecommendFragment extends BaseMVPFragment<RecommendView, RecommendP
     @Override
     public void onSuccess(Recommend recommend) {
         List<DataListBean<List<Special>>> dataList = recommend.getDataList();
+        Log.e(TAG,recommend.toString());
         mDataList.clear();
         //筛选数据
         for (int i = dataList.size() - 1; i >= 0; i--) {
@@ -97,6 +99,6 @@ public class RecommendFragment extends BaseMVPFragment<RecommendView, RecommendP
     @Override
     public void onRefresh() {
         //请求数据
-        mPresenter.loadData();
+        mPresenter.loadData(mParams,true);
     }
 }

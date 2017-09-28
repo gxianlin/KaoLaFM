@@ -1,5 +1,7 @@
 package com.ilynn.kaolafm.bean;
 
+import com.ilynn.kaolafm.cache.BaseCache;
+
 import java.util.List;
 
 /**
@@ -11,7 +13,7 @@ import java.util.List;
  * 邮箱：gong.xl@wonhigh.cn
  */
 
-public class TypeMenu extends BaseBean {
+public class TypeMenu extends BaseCache {
 
     /**
      * name : 热门分类

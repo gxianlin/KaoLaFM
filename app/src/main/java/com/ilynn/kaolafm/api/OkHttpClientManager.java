@@ -66,7 +66,7 @@ public class OkHttpClientManager {
             public Response intercept(Chain chain) throws IOException {
                 Request original = chain.request();
 
-                //添加请求头
+                //添加请求头,这里没添加,有需要在此添加
                 Request request;
                 request = original.newBuilder()
                         .method(original.method(), original.body())

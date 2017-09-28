@@ -1,6 +1,7 @@
 package com.ilynn.kaolafm.bean;
 
 import com.google.gson.JsonArray;
+import com.ilynn.kaolafm.cache.BaseCache;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * 修改备注：
  * 邮箱：gong.xl@wonhigh.cn
  */
-public class RadioBean extends BaseBean {
+public class RadioBean extends BaseCache {
 
     private List<DataListBean<JsonArray>> dataList;
 

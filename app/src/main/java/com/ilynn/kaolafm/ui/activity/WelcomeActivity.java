@@ -45,7 +45,7 @@ public class WelcomeActivity extends BaseMVPActivity<BannerView, BannerPresenter
     @Override
     public void initData() {
         //请求页面广告
-        mPresenter.loadData();
+        mPresenter.loadData(mParams,false);
     }
 
     @Override

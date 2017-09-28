@@ -1,11 +1,13 @@
 package com.ilynn.kaolafm.bean;
 
+import com.ilynn.kaolafm.cache.BaseCache;
+
 import java.util.List;
 
 /**
  * 专辑
  */
-public class Special {
+public class Special extends BaseCache{
 
     /**
      * rid : 1100000145879

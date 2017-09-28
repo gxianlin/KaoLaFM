@@ -1,8 +1,9 @@
 package com.ilynn.kaolafm.bean;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.ilynn.kaolafm.cache.BaseCache;
 
-public class DataListBean<T> implements MultiItemEntity {
+public class DataListBean<T> extends BaseCache implements MultiItemEntity {
     private int id;
     private String name;
     private String icon;

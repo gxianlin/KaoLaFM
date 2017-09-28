@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.ilynn.base.BaseActivity;
+import com.ilynn.kaolafm.api.RequestParams;
 
 import java.lang.reflect.ParameterizedType;
 
@@ -19,11 +20,13 @@ import java.lang.reflect.ParameterizedType;
 public abstract class BaseMVPActivity<V extends IView, P extends BasePresenter<V>>
         extends BaseActivity {
     public P mPresenter;
+    public RequestParams mParams;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         mPresenter = getInstance(this);
         mPresenter.attachView((V) this);
+        mParams = new RequestParams(getClass().getSimpleName());
         super.onCreate(savedInstanceState);
     }
 

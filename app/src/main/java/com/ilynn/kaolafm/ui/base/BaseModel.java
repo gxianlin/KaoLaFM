@@ -1,5 +1,7 @@
 package com.ilynn.kaolafm.ui.base;
 
+import com.ilynn.kaolafm.api.RequestParams;
+
 /**
  * 描述：单个请求model
  * 作者：gong.xl
@@ -10,5 +12,11 @@ package com.ilynn.kaolafm.ui.base;
  */
 
 public interface BaseModel {
-    void loadData();
+    /**
+     * 获取数据
+     *
+     * @param params      请求参数
+     * @param isNeedCache 是否需要取缓存
+     */
+    void loadData(RequestParams params, boolean isNeedCache);
 }

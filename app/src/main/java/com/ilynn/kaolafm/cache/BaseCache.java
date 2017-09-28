@@ -1,5 +1,8 @@
 package com.ilynn.kaolafm.cache;
 
+import com.google.gson.Gson;
+import com.ilynn.kaolafm.bean.BaseBean;
+
 /**
  * 描述：TODO
  * 作者：gong.xl
@@ -9,5 +12,8 @@ package com.ilynn.kaolafm.cache;
  * 邮箱：gong.xl@wonhigh.cn
  */
 
-public class BaseCache {
+public class BaseCache extends BaseBean {
+    public String toString() {
+        return new Gson().toJson(this);
+    }
 }

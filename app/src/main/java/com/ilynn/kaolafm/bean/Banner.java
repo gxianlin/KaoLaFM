@@ -1,5 +1,7 @@
 package com.ilynn.kaolafm.bean;
 
+import com.ilynn.kaolafm.cache.BaseCache;
+
 /**
  * 描述：欢迎页面广告
  * 作者：gong.xl
@@ -8,7 +10,7 @@ package com.ilynn.kaolafm.bean;
  * 修改备注：
  * 邮箱：gong.xl@wonhigh.cn
  */
-public class Banner extends BaseBean {
+public class Banner extends BaseCache {
 
     /**
      * showTime : 3

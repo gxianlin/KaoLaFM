@@ -15,9 +15,9 @@ import rx.functions.Func1;
 
 public class CacheManager {
 
-    public static CacheManager sInstance;
+    private static CacheManager sInstance;
 
-    public IJsonCache mMemoryCache;
+    private IJsonCache mMemoryCache;
 
     private IJsonCache mDiskCache;
 
@@ -60,17 +60,15 @@ public class CacheManager {
         return Observable.concat(
                 loadFromMemory(key, cls, isNeedCache),
                 loadFromDisk(key, cls, isNeedCache),
-                loadFromNet(key, netCache)
-        ).first(new Func1<T, Boolean>() {
-            @Override
-            public Boolean call(T t) {
+                loadFromNet(key, netCache))
+                .first(new Func1<T, Boolean>() {
+                    @Override
+                    public Boolean call(T t) {
 
-                //此处用于逻辑判断,可用于判断缓存是否存在,是否过期(需自行实现)
-
-
-                return t != null;
-            }
-        });
+                        //此处用于逻辑判断,可用于判断缓存是否存在,是否过期(需自行实现)
+                        return t != null;
+                    }
+                });
 
     }
 

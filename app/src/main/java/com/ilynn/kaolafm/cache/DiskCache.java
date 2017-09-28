@@ -1,9 +1,9 @@
 package com.ilynn.kaolafm.cache;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.google.gson.Gson;
-import com.ilynn.base.util.LogUtils;
 import com.ilynn.kaolafm.KaoLaApplication;
 
 import java.io.BufferedWriter;
@@ -14,6 +14,8 @@ import java.io.IOException;
 
 import rx.Observable;
 import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * 描述：3级 磁盘缓存
@@ -32,6 +34,7 @@ public class DiskCache implements IJsonCache {
 
         //此处使用应用目录下文件缓存路径,可根据需要更改次路径
         CACHE_PATH = KaoLaApplication.getContext().getFilesDir().getAbsolutePath() + "/";
+        Log.i(TAG, "磁盘缓存路径:" + CACHE_PATH);
     }
 
     @Override
@@ -39,7 +42,7 @@ public class DiskCache implements IJsonCache {
         return Observable.create(new Observable.OnSubscribe<T>() {
             @Override
             public void call(Subscriber<? super T> subscriber) {
-                LogUtils.i(TAG, "从磁盘读取缓存数据,key = " + key);
+                Log.i(TAG, "从磁盘读取缓存数据,key = " + key);
                 if (key.equals("")) {
                     subscriber.onNext(null);
                 } else {
@@ -58,16 +61,18 @@ public class DiskCache implements IJsonCache {
                 }
                 subscriber.onCompleted();
             }
-        });
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
     public <T extends BaseCache> void put(final String key, final T data) {
+
         Observable.create(new Observable.OnSubscribe<T>() {
             @Override
             public void call(Subscriber<? super T> subscriber) {
 
-                LogUtils.i(TAG, "缓存数据到磁盘,key = " + key);
+                Log.i(TAG, "缓存数据到磁盘,key = " + key);
 
                 //文件路径
                 String filename = CACHE_PATH + key;
@@ -82,7 +87,9 @@ public class DiskCache implements IJsonCache {
                     subscriber.onCompleted();
                 }
             }
-        });
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
     }
 
 
@@ -135,8 +142,10 @@ public class DiskCache implements IJsonCache {
         } catch (IOException e) {
             e.printStackTrace();
             file.delete();
+            Log.i(TAG, "磁盘缓存文件创建失败:" + e.getMessage());
             return false;
         }
+        Log.i(TAG, "磁盘缓存文件创建成功:" + fileName);
         return true;
     }
 }
