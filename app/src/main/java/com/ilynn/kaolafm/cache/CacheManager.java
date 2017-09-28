@@ -1,5 +1,7 @@
 package com.ilynn.kaolafm.cache;
 
+import android.util.Log;
+
 import rx.Observable;
 import rx.functions.Action1;
 import rx.functions.Func1;
@@ -64,9 +66,12 @@ public class CacheManager {
                 .first(new Func1<T, Boolean>() {
                     @Override
                     public Boolean call(T t) {
-
                         //此处用于逻辑判断,可用于判断缓存是否存在,是否过期(需自行实现)
-                        return t != null;
+                        String result = t == null ? "缓存数据不存在" :
+                                t.isExpire() ? "缓存数据存在,但已过期" : "缓存数据存在,未过期";
+                        Log.e("cache",result);
+                        boolean b = t != null && !t.isExpire();
+                        return b;
                     }
                 });
 
