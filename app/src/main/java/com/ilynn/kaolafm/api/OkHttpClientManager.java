@@ -54,7 +54,7 @@ public class OkHttpClientManager {
                     @Override
                     public void log(String message) {
                         // 拦截 信息 并打印出来
-                        Log.i(TAG, "log: " + message);
+                        Log.i(TAG, "http: " + message);
                     }
 
                 });

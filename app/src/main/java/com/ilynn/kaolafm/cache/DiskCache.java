@@ -1,9 +1,9 @@
 package com.ilynn.kaolafm.cache;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.google.gson.Gson;
+import com.ilynn.base.util.LogUtils;
 import com.ilynn.kaolafm.KaoLaApplication;
 
 import java.io.BufferedWriter;
@@ -34,7 +34,7 @@ public class DiskCache implements IJsonCache {
 
         //此处使用应用目录下文件缓存路径,可根据需要更改次路径
         CACHE_PATH = KaoLaApplication.getContext().getFilesDir().getAbsolutePath() + "/";
-        Log.i(TAG, "磁盘缓存路径:" + CACHE_PATH);
+        LogUtils.i(TAG, "磁盘缓存路径:" + CACHE_PATH);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class DiskCache implements IJsonCache {
         return Observable.create(new Observable.OnSubscribe<T>() {
             @Override
             public void call(Subscriber<? super T> subscriber) {
-                Log.i(TAG, "从磁盘读取缓存数据,key = " + key);
+                LogUtils.i(TAG, "从磁盘读取缓存数据,key = " + key);
                 if (key.equals("")) {
                     subscriber.onNext(null);
                 } else {
@@ -72,7 +72,7 @@ public class DiskCache implements IJsonCache {
             @Override
             public void call(Subscriber<? super T> subscriber) {
 
-                Log.i(TAG, "缓存数据到磁盘,key = " + key);
+                LogUtils.i(TAG, "缓存数据到磁盘,key = " + key);
 
                 //文件路径
                 String filename = CACHE_PATH + key;
@@ -142,10 +142,10 @@ public class DiskCache implements IJsonCache {
         } catch (IOException e) {
             e.printStackTrace();
             file.delete();
-            Log.i(TAG, "磁盘缓存文件创建失败:" + e.getMessage());
+            LogUtils.i(TAG, "磁盘缓存文件创建失败:" + e.getMessage());
             return false;
         }
-        Log.i(TAG, "磁盘缓存文件创建成功:" + fileName);
+        LogUtils.i(TAG, "磁盘缓存文件创建成功:" + fileName);
         return true;
     }
 }

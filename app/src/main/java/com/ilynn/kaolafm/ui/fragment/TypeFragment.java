@@ -7,7 +7,6 @@ import android.support.v4.view.ViewPager;
 
 import com.ilynn.base.util.LogUtils;
 import com.ilynn.kaolafm.R;
-import com.ilynn.kaolafm.api.ApiManager;
 import com.ilynn.kaolafm.bean.TypeMenu;
 import com.ilynn.kaolafm.ui.adapter.CommonTabPagerAdapter;
 import com.ilynn.kaolafm.ui.base.BaseMVPFragment;
@@ -17,10 +16,6 @@ import com.ilynn.kaolafm.ui.view.TypeView;
 import java.util.Arrays;
 
 import butterknife.InjectView;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import static com.ilynn.kaolafm.R.id.tabLayout;
 
@@ -65,22 +60,6 @@ public class TypeFragment extends BaseMVPFragment<TypeView, TypePresenter> imple
         mViewpager1.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewpager1);
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
-
-        Call<ResponseBody> call = ApiManager.getInstance().getBody();
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-
-                showToast("onResponse");
-
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-                showToast("onFailure");
-            }
-        });
 
     }
 

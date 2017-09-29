@@ -1,10 +1,10 @@
 package com.ilynn.kaolafm.cache;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.LruCache;
 
 import com.google.gson.Gson;
+import com.ilynn.base.util.LogUtils;
 
 import java.io.UnsupportedEncodingException;
 
@@ -31,7 +31,7 @@ public class MemoryCache implements IJsonCache {
 
         //给LruCache分配1/8
         int mCacheSize = maxMemory / 8;
-        Log.i(TAG,"内存缓存大小:"+mCacheSize);
+        LogUtils.i(TAG,"内存缓存大小:"+mCacheSize);
 
         //初始化LruCache
         mCache = new LruCache<String, String>(mCacheSize) {
@@ -52,7 +52,7 @@ public class MemoryCache implements IJsonCache {
         return Observable.create(new Observable.OnSubscribe<T>() {
             @Override
             public void call(Subscriber<? super T> subscriber) {
-                Log.i(TAG, "从内存读取缓存数据,key = " + key);
+                LogUtils.i(TAG, "从内存读取缓存数据,key = " + key);
 
                 //通过key获取缓存数据
                 String result = mCache.get(key);
@@ -80,7 +80,7 @@ public class MemoryCache implements IJsonCache {
     @Override
     public <T extends BaseCache> void put(String key, T data) {
         if (data != null) {
-            Log.i(TAG, "缓存数据到内存,key = " + key);
+            LogUtils.i(TAG, "缓存数据到内存,key = " + key);
             mCache.put(key, data.toString());
         }
     }

@@ -20,6 +20,7 @@
     <color name="text_color_1">#414141</color>
     <color name="text_color_2">#5f5f5f</color>
     <color name="text_color_3">#a0a0a0</color>
+    <color name="text">#dedbdb</color>
 
     <color name="icon_nor">#e38989</color>
 
