@@ -33,14 +33,14 @@ public abstract class CallBackPresenter<V extends IView, M extends BaseCache> ex
     }
 
     /**
-     * 请求数据
+     * 请求网络数据
      *
      * @return
      */
     protected abstract Observable<M> getData();
 
     /**
-     * 设置数据回调
+     * 设置数据请求成功回调
      *
      * @param data 数据
      */
@@ -48,12 +48,20 @@ public abstract class CallBackPresenter<V extends IView, M extends BaseCache> ex
 
     @Override
     public void loadData(RequestParams params, boolean isNeedCache) {
-        addSubscription(CacheManager.getInstance().loadData(params.toString(), clazz, isNeedCache, new NetCache<M>() {
-            @Override
-            public Observable<M> get() {
-                return getData();
-            }
-        }), new ApiCallBack<M>() {
+
+        //获取数据,采用先内存,后磁盘,最后网络方式
+        Observable<M> mObservable = CacheManager.getInstance().loadData(params.toString(), clazz, isNeedCache, new
+                NetCache<M>() {
+                    @Override
+                    public Observable<M> get() {
+
+                        //如果内存和磁盘无缓存数据,或者强制取网络数据时调用此方法
+                        return getData();
+                    }
+                });
+
+        //回调处理,因各页面回调仅onSuccess不同,将其抽象
+        ApiCallBack<M> apiCallBack = new ApiCallBack<M>() {
             @Override
             public void onStarted() {
                 mView.showProgress();
@@ -61,6 +69,8 @@ public abstract class CallBackPresenter<V extends IView, M extends BaseCache> ex
 
             @Override
             public void onSuccess(M data) {
+
+                //具体数据处理逻辑到具体presenter中处理
                 setResult(data);
             }
 
@@ -73,6 +83,9 @@ public abstract class CallBackPresenter<V extends IView, M extends BaseCache> ex
             public void onFinished() {
                 mView.hideProgress();
             }
-        });
+        };
+
+        //添加统一订阅和回调
+        addSubscription(mObservable, apiCallBack);
     }
 }

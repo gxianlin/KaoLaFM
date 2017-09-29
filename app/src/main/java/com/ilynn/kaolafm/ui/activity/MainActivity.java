@@ -1,6 +1,7 @@
 package com.ilynn.kaolafm.ui.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -81,6 +82,12 @@ public class MainActivity extends BaseActivity {
             mMainViewpager.setCurrentItem(tag);
         }
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        LogUtils.e(TAG, "requestCode = " + requestCode + ",resultCode = " + resultCode);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

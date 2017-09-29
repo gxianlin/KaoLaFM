@@ -1,9 +1,7 @@
 package com.ilynn.kaolafm.ui.fragment;
 
 import android.graphics.Color;
-import android.os.Bundle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -11,12 +9,11 @@ import android.widget.TextView;
 import com.ilynn.base.BaseFragment;
 import com.ilynn.base.util.DensityUtil;
 import com.ilynn.kaolafm.R;
-import com.ilynn.kaolafm.ui.view.WordFlowLayout;
+import com.ilynn.kaolafm.ui.custom.WordFlowLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 import static com.ilynn.base.util.DensityUtil.dp2px;

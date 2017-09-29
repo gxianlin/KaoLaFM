@@ -57,6 +57,12 @@ public class TypeFragment extends BaseMVPFragment<TypeView, TypePresenter> imple
         CommonTabPagerAdapter adapter = new CommonTabPagerAdapter(getChildFragmentManager(), 3, Arrays.asList("美食",
                 "电影", "玩乐"), mContext);
         adapter.setListener(this);
+        if (mViewpager1 == null){
+            LogUtils.e(TAG,"mViewpager == null");
+        }
+        if (adapter == null){
+            LogUtils.e(TAG,"adapter == null");
+        }
         mViewpager1.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewpager1);
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);

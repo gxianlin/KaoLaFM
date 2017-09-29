@@ -1,5 +1,6 @@
 package com.ilynn.kaolafm.ui.base;
 
+import com.ilynn.base.util.LogUtils;
 import com.ilynn.kaolafm.api.ApiCallBack;
 
 import rx.Observable;
@@ -7,7 +8,7 @@ import rx.subscriptions.CompositeSubscription;
 
 /**
  * 描述：基础presenter
- *      添加统一的订阅关系
+ * 添加统一的订阅关系
  * 作者：gong.xl
  * 创建日期：2017/9/12 下午4:50
  * 修改日期: 2017/9/12
@@ -18,14 +19,17 @@ import rx.subscriptions.CompositeSubscription;
 public abstract class BasePresenter<V extends IView> implements IPresenter<V>, BaseModel {
     protected V mView;
     protected CompositeSubscription mSubscription;
+    private String mViewName;
 
     @Override
     public void attachView(V view) {
         mView = view;
+        mViewName = mView.getClass().getSimpleName();
     }
 
     @Override
     public void detachView() {
+
         mView = null;
         onUnsubscribe();
     }
@@ -42,12 +46,14 @@ public abstract class BasePresenter<V extends IView> implements IPresenter<V>, B
         }
 
         mSubscription.add(observable.subscribe(apiCallBack));
+        LogUtils.d("添加订阅:" + mViewName);
     }
 
     //RXjava取消注册，以避免内存泄露
     protected void onUnsubscribe() {
         if (mSubscription != null && mSubscription.hasSubscriptions()) {
             mSubscription.unsubscribe();
+            LogUtils.d("取消注册:" + mViewName);
         }
     }
 }

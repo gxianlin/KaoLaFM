@@ -1,4 +1,4 @@
-package com.ilynn.kaolafm.ui.view;
+package com.ilynn.kaolafm.ui.custom;
 
 import android.content.Context;
 import android.util.AttributeSet;
