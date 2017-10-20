@@ -68,6 +68,13 @@ public class BroadcastFragment extends BaseMVPFragment<BroadcastView, BroadcastP
                 //每次点击标题会回调此方法
                 //初始化完成后默认会调用一次
                 LogUtils.e("onTabSelected: " + tab.getPosition());
+
+                //如果点击的是第四项
+                if (tab.getPosition() == 3){
+                    //让tablayout选中第一项
+                    mTabLayout.getTabAt(0).select();
+
+                }
             }
 
             @Override
@@ -162,14 +169,14 @@ public class BroadcastFragment extends BaseMVPFragment<BroadcastView, BroadcastP
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        LogUtils.e(TAG, "requestCode = " + requestCode + ",resultCode = " + resultCode);
-        if (resultCode == 1001) {
-            if (data != null) {
-                int index = data.getIntExtra("index", -1);
-                if (index > -1) {
-                    mCheckbox.setChecked(true);
-                    showToast("接收到返回值:" + index);
-                }
+
+        if (resultCode == 1001 && data != null) {
+            int index = data.getIntExtra("index", -1);
+            if (index > -1) {
+                mCheckbox.setChecked(true);
+                LogUtils.e(TAG, "Fragment requestCode = " + requestCode + ",resultCode = " + resultCode);
+                showToast("Fragment 接收到返回值:" + index);
+
             }
         }
         super.onActivityResult(requestCode, resultCode, data);

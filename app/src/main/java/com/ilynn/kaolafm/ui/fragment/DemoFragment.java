@@ -103,7 +103,7 @@ public class DemoFragment extends Fragment {
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mAdapter = new DemoAdapter(getActivity(), R.layout.item_ification_class, data);
-        mAdapter.openLoadAnimation();
+//        mAdapter.openLoadAnimation();
         mRecyclerView.setAdapter(mAdapter);//设置adapter
     }
 

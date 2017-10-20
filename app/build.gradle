@@ -1,11 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'release'
+            keyPassword '123456'
+            storeFile file('/Users/ilynn/AndroidStudioProjects/KaoLaFM/app/src/main/kaola_key.jks')
+            storePassword '123456'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.ilynn.kaolafm"
-        minSdkVersion 15
+        minSdkVersion 18
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -25,11 +33,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile project(':base')
-
-
-
-
-
+    compile project(':imageselectorlibrary')
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.1'
     compile 'io.reactivex:rxandroid:1.2.1'

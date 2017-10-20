@@ -99,6 +99,6 @@ public class RecommendFragment extends BaseMVPFragment<RecommendView, RecommendP
     @Override
     public void onRefresh() {
         //请求数据
-        mPresenter.loadData(mParams, true);
+        mPresenter.loadData(mParams, false);
     }
 }

@@ -86,7 +86,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        LogUtils.e(TAG, "requestCode = " + requestCode + ",resultCode = " + resultCode);
+        LogUtils.e(TAG, "Activity requestCode = " + requestCode + ",resultCode = " + resultCode);
         super.onActivityResult(requestCode, resultCode, data);
     }
 

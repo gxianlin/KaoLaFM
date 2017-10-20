@@ -57,11 +57,11 @@ public class TypeFragment extends BaseMVPFragment<TypeView, TypePresenter> imple
         CommonTabPagerAdapter adapter = new CommonTabPagerAdapter(getChildFragmentManager(), 3, Arrays.asList("美食",
                 "电影", "玩乐"), mContext);
         adapter.setListener(this);
-        if (mViewpager1 == null){
-            LogUtils.e(TAG,"mViewpager == null");
+        if (mViewpager1 == null) {
+            LogUtils.e(TAG, "mViewpager == null");
         }
-        if (adapter == null){
-            LogUtils.e(TAG,"adapter == null");
+        if (adapter == null) {
+            LogUtils.e(TAG, "adapter == null");
         }
         mViewpager1.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewpager1);
@@ -96,6 +96,15 @@ public class TypeFragment extends BaseMVPFragment<TypeView, TypePresenter> imple
 
     @Override
     public Fragment getFragment(int position) {
-        return DemoFragment.newInstance(position);
+        switch (position){
+            case 0:
+                return new DiscoverFragment();
+            case 1:
+                return DemoFragment.newInstance(position - 1);
+            case 2:
+                return new MineFragment();
+            default:
+                return DemoFragment.newInstance(position);
+        }
     }
 }

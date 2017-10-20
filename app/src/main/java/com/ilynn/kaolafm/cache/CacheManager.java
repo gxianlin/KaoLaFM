@@ -16,6 +16,7 @@ import rx.functions.Func1;
  */
 
 public class CacheManager {
+    private static String TAG = "cache";
 
     private static CacheManager sInstance;
 
@@ -141,6 +142,7 @@ public class CacheManager {
         return netCache.get().doOnNext(new Action1<T>() {
             @Override
             public void call(T t) {
+                LogUtils.i(TAG, "从网络获取最新数据,key = " + key);
                 //如果网络获取到数据,则缓存至内存及磁盘
                 if (t != null) {
                     mMemoryCache.put(key, t);

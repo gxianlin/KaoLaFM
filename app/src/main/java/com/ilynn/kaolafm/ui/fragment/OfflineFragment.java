@@ -31,6 +31,11 @@ public class OfflineFragment extends BaseFragment {
     @InjectView(R.id.word_2)
     WordFlowLayout mWord2;
 
+    //用于记录上次点击的索引
+    int lastIndex = -1;
+    //存放所有TextView
+    List<TextView> mTextViews = new ArrayList<>();
+
     @Override
     public int getLayoutId() {
         return R.layout.fragment_offline;
@@ -77,13 +82,38 @@ public class OfflineFragment extends BaseFragment {
             tv.setGravity(Gravity.CENTER);
             tv.setOnClickListener(this);
             tv.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape_textview));
+
+            //添加到集合
+            mTextViews.add(tv);
+
             mWord2.addView(tv, params);
         }
     }
 
     @Override
     public void onClick(View v) {
-        showToast("你点击了第" + v.getTag() + "个");
+        //获取被点击的索引
+        int position = (int) v.getTag();
+
+        //获取被点击的TextView
+        TextView tv = mTextViews.get(position);
+
+        //改变TextView的字体颜色和背景
+        tv.setTextColor(getResources().getColor(R.color.head_bg));
+        tv.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape_textview_sel));
+
+        //判断是否是第一次点击
+        if (lastIndex>=0) {
+            //取出上一次点击的TextView
+            TextView lastTv = mTextViews.get(lastIndex);
+            //恢复默认字体颜色和背景
+            lastTv.setTextColor(Color.BLACK);
+            lastTv.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape_textview));
+        }
+
+        //改变上次点击的索引
+        lastIndex = position;
+
     }
 
     @Override
