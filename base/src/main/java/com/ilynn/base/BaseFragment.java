@@ -12,8 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.ilynn.base.util.LogUtils;
-
 import butterknife.ButterKnife;
 
 /**
@@ -26,7 +24,7 @@ import butterknife.ButterKnife;
  */
 
 public abstract class BaseFragment extends Fragment implements View.OnClickListener {
-    protected final String TAG = BaseFragment.class.getSimpleName();
+    protected final String TAG = this.getClass().getSimpleName();
     protected Context mContext;
 
     private boolean isVisible = false;
@@ -61,7 +59,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LogUtils.d(TAG, "onCreate()");
+//        LogUtils.d(TAG, "onCreate()");
         receiveData();
         mContext = getContext();
     }
@@ -70,7 +68,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        LogUtils.d(TAG, "onCreateView()");
+//        LogUtils.d(TAG, "onCreateView()");
         mViews = new SparseArray<>();
         if (contentView == null) {
             contentView = inflater.inflate(getLayoutId(), container, false);
@@ -198,37 +196,37 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onStart() {
         super.onStart();
-        LogUtils.d(TAG, "onStart()");
+//        LogUtils.d(TAG, "onStart()");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        LogUtils.d(TAG, "onResume()");
+//        LogUtils.d(TAG, "onResume()");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        LogUtils.d(TAG, "onPause()");
+//        LogUtils.d(TAG, "onPause()");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        LogUtils.d(TAG, "onStop()");
+//        LogUtils.d(TAG, "onStop()");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
-        LogUtils.d(TAG, "onDestroyView()");
+//        LogUtils.d(TAG, "onDestroyView()");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        LogUtils.d(TAG, "onDestroy()");
+//        LogUtils.d(TAG, "onDestroy()");
     }
 }
