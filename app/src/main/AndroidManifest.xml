@@ -10,6 +10,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
     <application
         android:name=".KaoLaApplication"
         android:allowBackup="true"
@@ -27,10 +31,15 @@
         </activity>
         <activity android:name=".ui.activity.MainActivity"/>
         <activity android:name=".ui.activity.PlayActivity"/>
-        <activity android:name=".ui.activity.FiltrateActivity">
-        </activity>
+        <activity android:name=".ui.activity.FiltrateActivity"/>
         <activity android:name=".ui.activity.ImageUpLoadActivity"/>
         <activity android:name="com.benmei.imageselectorlibrary.MultiImageSelectorActivity"/>
+
+
+
+        <meta-data android:value="5a02b755f43e485bc200018c" android:name="UMENG_APPKEY"/>
+        <meta-data android:value="${UMENG_CHANNEL_VALUE}" android:name="UMENG_CHANNEL"/>
+
     </application>
 
 </manifest>

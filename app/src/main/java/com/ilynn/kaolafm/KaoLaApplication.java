@@ -1,6 +1,7 @@
 package com.ilynn.kaolafm;
 
 import com.ilynn.base.BaseApplication;
+import com.umeng.analytics.MobclickAgent;
 
 /**
  * 描述：TODO
@@ -11,5 +12,18 @@ import com.ilynn.base.BaseApplication;
  * 邮箱：gong.xl@wonhigh.cn
  */
 public class KaoLaApplication extends BaseApplication {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        initUMeng();
+    }
 
+
+    /**
+     * 初始化友盟统计
+     */
+    private void initUMeng(){
+        MobclickAgent.setDebugMode(true);
+        MobclickAgent.openActivityDurationTrack(false);
+    }
 }

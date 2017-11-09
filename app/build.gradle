@@ -2,29 +2,76 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
-        config {
-            keyAlias 'release'
-            keyPassword '123456'
-            storeFile file('/Users/ilynn/AndroidStudioProjects/KaoLaFM/app/src/main/kaola_key.jks')
-            storePassword '123456'
+//        config {
+//            keyAlias 'release'
+//            keyPassword '123456'
+//            storeFile file('/Users/ilynn/AndroidStudioProjects/KaoLaFM/app/src/main/kaola_key.jks')
+//            storePassword '123456'
+//        }
+        //配置签名
+        release{
+            storePassword "123456"
+            keyAlias "ilynn"
+            keyPassword "123456"
+            storeFile file("kaola_key.jks")
         }
     }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
+
     defaultConfig {
         applicationId "com.ilynn.kaolafm"
         minSdkVersion 18
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE:"ilynn"]
+
     }
+
+    lintOptions {
+        abortOnError false
+        lintConfig file("lint.xml")
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
+            //指定我们release包的输出文件名就是我们的渠道名字
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith(".apk")) {
+
+                        def fileName = "${variant.productFlavors[0].name}" + ".apk"
+                        output.outputFile = new File(outputFile.parent, fileName);
+                    }
+                }
+            }
         }
     }
+
+    //配置多渠道打包
+    productFlavors{
+        baidu{
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE:"baidu"]
+            //根据渠道改变资源文件中相关值
+//            resValue("strings","app_name","BKaola")
+        }
+        googleplay{
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE:"googleplay"]
+//            resValue("strings","app_name","GKaola")
+        }
+
+        productFlavors.all {
+            flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+        }
+    }
+
 }
 
 dependencies {
@@ -48,4 +95,8 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.28'
     testCompile 'junit:junit:4.12'
+
+    //友盟统计
+    compile 'com.umeng.analytics:analytics:latest.integration'
+
 }

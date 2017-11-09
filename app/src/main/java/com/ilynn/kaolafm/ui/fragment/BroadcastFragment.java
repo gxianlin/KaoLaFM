@@ -3,6 +3,7 @@ package com.ilynn.kaolafm.ui.fragment;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -153,6 +154,12 @@ public class BroadcastFragment extends BaseMVPFragment<BroadcastView, BroadcastP
         mPresenter.loadData(mParams, false);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.e("tag","onResume");
+    }
+
     /**
      * tablayout的tab
      *
@@ -169,7 +176,7 @@ public class BroadcastFragment extends BaseMVPFragment<BroadcastView, BroadcastP
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+        Log.e("tag","onActivityResult");
         if (resultCode == 1001 && data != null) {
             int index = data.getIntExtra("index", -1);
             if (index > -1) {
