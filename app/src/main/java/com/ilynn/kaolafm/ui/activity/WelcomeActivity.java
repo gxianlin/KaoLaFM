@@ -1,5 +1,6 @@
 package com.ilynn.kaolafm.ui.activity;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
 import android.view.Window;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 
 import com.ilynn.kaolafm.R;
 import com.ilynn.kaolafm.bean.Banner;
+import com.ilynn.kaolafm.config.Constants;
 import com.ilynn.kaolafm.ui.base.BaseMVPActivity;
 import com.ilynn.kaolafm.ui.presenter.BannerPresenter;
 import com.ilynn.kaolafm.ui.view.BannerView;
@@ -45,7 +47,7 @@ public class WelcomeActivity extends BaseMVPActivity<BannerView, BannerPresenter
     @Override
     public void initData() {
         //请求页面广告
-        mPresenter.loadData(mParams,false);
+        mPresenter.loadData(mParams, false);
     }
 
     @Override
@@ -61,13 +63,14 @@ public class WelcomeActivity extends BaseMVPActivity<BannerView, BannerPresenter
     @Override
     public void hideProgress() {
         mHandler = new Handler();
+        //延时2.5秒后跳转到主页面
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 startToActivity(MainActivity.class);
-                finish();
+                finishThis();
             }
-        }, 2000);
+        }, 2500);
     }
 
     @Override
@@ -84,6 +87,18 @@ public class WelcomeActivity extends BaseMVPActivity<BannerView, BannerPresenter
 
     @Override
     public void onClick(View v) {
-        showToast(mBanner.getAction());
+        //取消handler发送消息
+        mHandler.removeCallbacksAndMessages(null);
+
+        Intent intent = new Intent(this, WebActivity.class);
+        intent.putExtra(Constants.WEN_BANNER, mBanner.getAction());
+        startActivity(intent);
+        finishThis();
+    }
+
+    public void finishThis() {
+        if (!this.isFinishing()) {
+            finish();
+        }
     }
 }

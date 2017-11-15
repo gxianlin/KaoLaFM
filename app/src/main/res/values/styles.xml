@@ -27,4 +27,12 @@
         <item name="actionMenuTextColor">#ffffff</item> <!--  菜单字体颜色-->
         <item name="android:textSize">18sp</item> <!-- 菜单字体大小-->
     </style>
+
+    <style name="mProgress_horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/progressbar_horizontal_1</item><!-- progress_horizontal -->
+        <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
+        <item name="android:minHeight">20dip</item>
+        <item name="android:maxHeight">20dip</item>
+    </style>
 </resources>

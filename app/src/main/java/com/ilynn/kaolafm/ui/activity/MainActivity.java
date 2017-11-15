@@ -1,8 +1,11 @@
 package com.ilynn.kaolafm.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PixelFormat;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
@@ -12,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ilynn.base.BaseActivity;
 import com.ilynn.base.util.DensityUtil;
@@ -46,6 +50,18 @@ public class MainActivity extends BaseActivity {
 
     ArrayList<View> tabs = new ArrayList<>();
 
+    // 定义一个变量，来标识是否退出
+    private static boolean isExit = false;
+
+    @SuppressLint("HandlerLeak")
+    Handler mHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            isExit = false;
+        }
+    };
 
     @Override
     public int getLayoutId() {
@@ -211,6 +227,20 @@ public class MainActivity extends BaseActivity {
     public void setCurrent(int index) {
         if (mMainViewpager != null) {
             mMainViewpager.setCurrentItem(index);
+        }
+    }
+
+    @Override
+    public void onKeyBack() {
+        if (!isExit) {
+            isExit = true;
+            Toast.makeText(getApplicationContext(), "再按一次退出程序",
+                    Toast.LENGTH_SHORT).show();
+            // 利用handler延迟发送更改状态信息
+            mHandler.sendEmptyMessageDelayed(0, 2000);
+        } else {
+            finish();
+            System.exit(0);
         }
     }
 }

@@ -2,4 +2,7 @@
 <resources>
     <color name="head_bg">#eb4d50</color>
     <color name="white">#ffffff</color>
+    <!--主界面-->
+    <color name="tab_text_normal">#212121</color>
+    <color name="tab_text_selected">#eb4d50</color>
 </resources>

@@ -5,9 +5,4 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent">
-    <com.ilynn.kaolafm.ui.custom.WordFlowLayout
-        android:layout_marginTop="20dp"
-        android:id="@+id/word_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 </LinearLayout>

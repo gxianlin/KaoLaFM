@@ -9,4 +9,9 @@ package com.ilynn.kaolafm.config;
  * 邮箱：gong.xl@wonhigh.cn
  */
 public class Constants {
+    /**
+     * 欢迎页面传递URL的key
+     */
+    public final static String WEN_BANNER = "web_banner_url";
+
 }

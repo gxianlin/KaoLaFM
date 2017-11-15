@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -189,5 +190,18 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected void onDestroy() {
         super.onDestroy();
 //        LogUtils.d(TAG, "onDestroy()");
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            onKeyBack();
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public void onKeyBack(){
+
     }
 }

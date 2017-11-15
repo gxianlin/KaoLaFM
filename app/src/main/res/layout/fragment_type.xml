@@ -4,39 +4,5 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:theme="@style/ToolbarTheme"
-        android:fitsSystemWindows="true">
-        <!--app:layout_scrollFlags="scroll|enterAlways"-->
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapsingToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:contentScrim="?attr/colorPrimary"
-            app:navigationIcon="@mipmap/back"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                <ImageView
-                    android:background="@drawable/haha"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp" />
-        </android.support.design.widget.CollapsingToolbarLayout>
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_list_item"
-            app:tabIndicatorColor="#666666"
-            app:tabSelectedTextColor="#4D4D4D"
-            app:tabTextColor="#A7A7A7" />
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 </android.support.design.widget.CoordinatorLayout>
