@@ -59,6 +59,8 @@ public class HorizontalTabView extends HorizontalScrollView {
 
         mPaint = new Paint();
         mPadding = DensityUtil.dp2px(10);
+
+
         addView(getLineaLayout());
     }
 
@@ -80,18 +82,20 @@ public class HorizontalTabView extends HorizontalScrollView {
         //创建存放tabs的容器
         mTabsLayout = new LinearLayout(mContext);
         mTabsLayout.setOrientation(LinearLayout.HORIZONTAL);
-        LinearLayout.LayoutParams tabParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0);
+        LinearLayout.LayoutParams tabParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 0);
         tabParams.weight = 1;
+
         mTabsLayout.setLayoutParams(tabParams);
 
         //创建小滑块
         mSlipView = new View(mContext);
         LinearLayout.LayoutParams slipParams = new LinearLayout.LayoutParams(DensityUtil.dp2px(50), DensityUtil.dp2px
                 (5));
+        slipParams.leftMargin = DensityUtil.dp2px(25);
         mSlipView.setBackgroundColor(Color.RED);
         mSlipView.setLayoutParams(slipParams);
         parent.addView(mTabsLayout);
-//        parent.addView(mSlipView);
+        parent.addView(mSlipView);
 
         return parent;
     }
@@ -112,8 +116,8 @@ public class HorizontalTabView extends HorizontalScrollView {
         mTabsLayout.removeAllViews();
         for (int i = 0; i < mTabs.size(); i++) {
             TextView tab = new TextView(mContext);
-            LinearLayout.LayoutParams tabParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams
-                    .WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
+            LinearLayout.LayoutParams tabParams = new LinearLayout.LayoutParams(DensityUtil.dp2px(100), LinearLayout
+                    .LayoutParams.MATCH_PARENT);
             tab.setLayoutParams(tabParams);
             tab.setGravity(Gravity.CENTER);
             tab.setTextSize(14);
