@@ -9,7 +9,7 @@ android {
 //            storePassword '123456'
 //        }
         //配置签名
-        release{
+        release {
             storePassword "123456"
             keyAlias "ilynn"
             keyPassword "123456"
@@ -26,8 +26,12 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
-        manifestPlaceholders = [UMENG_CHANNEL_VALUE:"ilynn"]
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "ilynn"]
 
+//        //使用lambda表达式
+//        jackOptions {
+//            enabled true
+//        }
     }
 
     lintOptions {
@@ -56,14 +60,14 @@ android {
     }
 
     //配置多渠道打包
-    productFlavors{
-        baidu{
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE:"baidu"]
+    productFlavors {
+        baidu {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
             //根据渠道改变资源文件中相关值
 //            resValue("strings","app_name","BKaola")
         }
-        googleplay{
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE:"googleplay"]
+        googleplay {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "googleplay"]
 //            resValue("strings","app_name","GKaola")
         }
 
@@ -71,7 +75,16 @@ android {
             flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
         }
     }
+//    compileOptions{
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
 
+//    //使用lambad表达式
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
 }
 
 dependencies {
@@ -95,8 +108,11 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.28'
     testCompile 'junit:junit:4.12'
-
     //友盟统计
     compile 'com.umeng.analytics:analytics:latest.integration'
+
+    //轮播 最新版本
+    compile 'com.youth.banner:banner:1.4.10'
+
 
 }

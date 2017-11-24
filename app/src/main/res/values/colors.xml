@@ -3,13 +3,19 @@
     <color name="colorPrimary">#dbdce2</color>
     <color name="colorPrimaryDark">#eb4d50</color>
     <color name="colorAccent">#FF4081</color>
-    
+
     <color name="white">#ffffff</color>
     <color name="green">#1fc5a8</color>
     <color name="line">#e6e6e6</color>
 
     <!--页面灰色背景色-->
     <color name="page_bg">#f6f6f6</color>
+
+    <!--分类页面菜单背景色-->
+    <color name="type_menu_bg">#f3efee</color>
+
+    <!--搜索框内文字颜色-->
+    <color name="seek_text_color">#998888</color>
 
 
     <!--主题颜色-->

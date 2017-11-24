@@ -14,4 +14,15 @@ public class Constants {
      */
     public final static String WEN_BANNER = "web_banner_url";
 
+    /**
+     * 分类菜单跳转标题key
+     */
+    public final static String TITLE = "title";
+
+    /**
+     * 分类菜单跳转fid key
+     */
+    public final static String FID = "fid";
+
+
 }

@@ -25,6 +25,18 @@ public interface Url {
     String HOT_TYPE = "category/get/allinfo";
     String OTHER_TYPE = "category/get/oldinfo";
 
+
+
+    //分类tab菜单
+//    String TYPE_TABS = "category/list?fid={fid}";
+    String TYPE_TABS = "category/list?";
+
+    //分类列表
+    String TYPE_LIST = "resource/adsearch?words=&cid={cid}&sorttype=HOT_RANK_DESC&pagesize=10&pagenum={pagenum}";
+
+    //分类精选页面
+    String CHOICE = "pagecontent/list?pageid={pageid}";
+
     //广播
     String BROADCAST = "pagecontent/list?pageid=107";
 

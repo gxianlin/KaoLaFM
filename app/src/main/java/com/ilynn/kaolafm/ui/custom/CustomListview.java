@@ -12,7 +12,6 @@ import android.widget.ListView;
  * 修改备注：
  * 邮箱：gong.xl@wonhigh.cn
  */
-
 public class CustomListview extends ListView {
     private int mPosition;
 

@@ -5,11 +5,15 @@ import com.ilynn.kaolafm.bean.BaseResult;
 import com.ilynn.kaolafm.bean.BroadCastBean;
 import com.ilynn.kaolafm.bean.RadioBean;
 import com.ilynn.kaolafm.bean.Recommend;
+import com.ilynn.kaolafm.bean.TypeList;
 import com.ilynn.kaolafm.bean.TypeMenu;
+import com.ilynn.kaolafm.bean.TypeTabs;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 import static com.ilynn.kaolafm.config.Url.BANNER;
@@ -18,6 +22,8 @@ import static com.ilynn.kaolafm.config.Url.HOT_TYPE;
 import static com.ilynn.kaolafm.config.Url.OTHER_TYPE;
 import static com.ilynn.kaolafm.config.Url.RADIO;
 import static com.ilynn.kaolafm.config.Url.RECOMMEND;
+import static com.ilynn.kaolafm.config.Url.TYPE_LIST;
+import static com.ilynn.kaolafm.config.Url.TYPE_TABS;
 
 /**
  * 描述：TODO
@@ -49,4 +55,10 @@ public interface ApiService {
 
     @GET(BANNER)
     Call<ResponseBody> getBody();
+
+    @GET(TYPE_TABS)
+    Observable<BaseResult<TypeTabs>> getTypeTabs(@Query("fid") String fid);
+
+    @GET(TYPE_LIST)
+    Observable<BaseResult<TypeList>> getTypeList(@Path("cid") String cid, @Path("pagenum") String pagenum);
 }

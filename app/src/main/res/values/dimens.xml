@@ -12,7 +12,7 @@
     <dimen name="title_height">50dp</dimen>
 
     <!--轮播广告栏高度-->
-    <dimen name="header_banner_height">180dp</dimen>
+    <dimen name="header_banner_height">200dp</dimen>
 
     <!--推荐快捷入口栏高度-->
     <dimen name="entry_height">80dp</dimen>
@@ -30,6 +30,6 @@
     <dimen name="layout_menu_height">100dp</dimen>
 
     <!--主播页面 滚动文字栏高度-->
-    <dimen name="roll_text_height">45dp</dimen>
+    <dimen name="roll_text_height">40dp</dimen>
 
 </resources>

@@ -72,6 +72,8 @@ public class WebActivity extends BaseActivity {
         if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebview.canGoBack()) {
             mWebview.goBack();
             return true;
+        }else {
+            onViewClicked();
         }
         return super.onKeyDown(keyCode, event);
     }

@@ -4,4 +4,9 @@
         <attr name="border_width" format="dimension" />
         <attr name="border_color" format="color" />
     </declare-styleable>
+    <declare-styleable name="ScrollTextView">
+        <attr name="scrollContentTextColor" format="color|reference"/>
+        <attr name="scrollTitleTextColor" format="color|reference"/>
+        <attr name="scrollTextSize" format="dimension|reference"/>
+    </declare-styleable>
 </resources>

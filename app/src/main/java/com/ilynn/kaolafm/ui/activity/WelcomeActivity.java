@@ -2,6 +2,7 @@ package com.ilynn.kaolafm.ui.activity;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -87,13 +88,15 @@ public class WelcomeActivity extends BaseMVPActivity<BannerView, BannerPresenter
 
     @Override
     public void onClick(View v) {
-        //取消handler发送消息
-        mHandler.removeCallbacksAndMessages(null);
-
-        Intent intent = new Intent(this, WebActivity.class);
-        intent.putExtra(Constants.WEN_BANNER, mBanner.getAction());
-        startActivity(intent);
-        finishThis();
+        String action = mBanner.getAction();
+        if (!TextUtils.isEmpty(action)) {
+            //取消handler发送消息
+            mHandler.removeCallbacksAndMessages(null);
+            Intent intent = new Intent(this, WebActivity.class);
+            intent.putExtra(Constants.WEN_BANNER,action );
+            startActivity(intent);
+            finishThis();
+        }
     }
 
     public void finishThis() {

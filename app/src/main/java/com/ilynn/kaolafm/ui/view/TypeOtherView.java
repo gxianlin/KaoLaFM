@@ -12,7 +12,6 @@ import com.ilynn.kaolafm.ui.base.IView;
  * 邮箱：gong.xl@wonhigh.cn
  */
 
-public interface TypeView extends IView{
-    void hotTypeSuccess(TypeMenu hotType);
-    void otherTypeSuccess(TypeMenu otherType);
+public interface TypeOtherView extends IView {
+    void typeOtherSuccess(TypeMenu hotType);
 }

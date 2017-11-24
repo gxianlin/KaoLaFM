@@ -1,6 +1,5 @@
 package com.ilynn.kaolafm.ui.fragment;
 
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 
@@ -17,8 +16,6 @@ import com.ilynn.kaolafm.ui.view.BroadcastView;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.InjectView;
-
 /**
  * 描述：发现-广播页面
  * 作者：gong.xl
@@ -27,11 +24,7 @@ import butterknife.InjectView;
  * 修改备注：
  * 邮箱：gong.xl@wonhigh.cn
  */
-public class BroadcastFragment extends BaseMVPFragment<BroadcastView, BroadcastPresenter> implements BroadcastView,
-        SwipeRefreshLayout.OnRefreshListener {
-
-    @InjectView(R.id.refresh)
-    SwipeRefreshLayout mRefresh;
+public class BroadcastFragment extends BaseMVPFragment<BroadcastView, BroadcastPresenter> implements BroadcastView {
 
 
     ArrayList<View> tabs = new ArrayList<>();
@@ -57,12 +50,10 @@ public class BroadcastFragment extends BaseMVPFragment<BroadcastView, BroadcastP
 
     @Override
     public void showProgress() {
-        mRefresh.setRefreshing(true);
     }
 
     @Override
     public void hideProgress() {
-        mRefresh.setRefreshing(false);
     }
 
     @Override
@@ -85,11 +76,6 @@ public class BroadcastFragment extends BaseMVPFragment<BroadcastView, BroadcastP
         LogUtils.i(radioList);
     }
 
-    @Override
-    public void onRefresh() {
-        //请求页面数据
-        mPresenter.loadData(mParams, false);
-    }
 
     @Override
     public void onResume() {

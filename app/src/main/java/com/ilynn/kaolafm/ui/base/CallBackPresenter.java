@@ -37,7 +37,7 @@ public abstract class CallBackPresenter<V extends IView, M extends BaseCache> ex
      *
      * @return
      */
-    protected abstract Observable<M> getData();
+    protected abstract Observable<M> getData(RequestParams params);
 
     /**
      * 设置数据请求成功回调
@@ -47,7 +47,7 @@ public abstract class CallBackPresenter<V extends IView, M extends BaseCache> ex
     protected abstract void setResult(M data);
 
     @Override
-    public void loadData(RequestParams params, boolean isNeedCache) {
+    public void loadData(final RequestParams params, boolean isNeedCache) {
 
         //获取数据,采用先内存,后磁盘,最后网络方式
         Observable<M> mObservable = CacheManager.getInstance().loadData(params.toString(), clazz, isNeedCache, new
@@ -56,7 +56,7 @@ public abstract class CallBackPresenter<V extends IView, M extends BaseCache> ex
                     public Observable<M> get() {
 
                         //如果内存和磁盘无缓存数据,或者强制取网络数据时调用此方法
-                        return getData();
+                        return getData(params);
                     }
                 });
 

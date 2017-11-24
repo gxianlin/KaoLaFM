@@ -8,6 +8,7 @@ import com.ilynn.kaolafm.bean.BroadCastBean;
 import com.ilynn.kaolafm.bean.RadioBean;
 import com.ilynn.kaolafm.bean.Recommend;
 import com.ilynn.kaolafm.bean.TypeMenu;
+import com.ilynn.kaolafm.bean.TypeTabs;
 import com.ilynn.kaolafm.config.Url;
 
 import okhttp3.ResponseBody;
@@ -129,7 +130,17 @@ public class ApiManager {
     }
 
 
-    public Call<ResponseBody> getBody(){
+    /**
+     * 请求分类列表tabs
+     *
+     * @param fid
+     * @return
+     */
+    public Observable<TypeTabs> getTypeTabs(String fid) {
+        return apiService.getTypeTabs(fid).compose(RxResultHelper.<TypeTabs>result());
+    }
+
+    public Call<ResponseBody> getBody() {
         return apiService.getBody();
     }
 }

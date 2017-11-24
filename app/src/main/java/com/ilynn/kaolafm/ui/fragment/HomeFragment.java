@@ -43,11 +43,11 @@ public class HomeFragment extends BaseFragment {
     public void initData() {
         MainPageAdapter adapter = new MainPageAdapter(getChildFragmentManager());
         adapter.addFragment(new RecommendFragment());
-        adapter.addFragment(new TypeFragment());
         adapter.addFragment(new BroadcastFragment());
         adapter.addFragment(new RadioFragment());
         adapter.setTitles(getResources().getStringArray(R.array.tab_names));
         mViewpager.setAdapter(adapter);
+        mViewpager.setOffscreenPageLimit(2);
         mTabLayout.setupWithViewPager(mViewpager);
     }
 }

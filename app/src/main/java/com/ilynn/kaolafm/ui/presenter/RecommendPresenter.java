@@ -1,6 +1,7 @@
 package com.ilynn.kaolafm.ui.presenter;
 
 import com.ilynn.kaolafm.api.ApiManager;
+import com.ilynn.kaolafm.api.RequestParams;
 import com.ilynn.kaolafm.bean.Recommend;
 import com.ilynn.kaolafm.ui.base.CallBackPresenter;
 import com.ilynn.kaolafm.ui.view.RecommendView;
@@ -18,7 +19,7 @@ import rx.Observable;
 
 public class RecommendPresenter extends CallBackPresenter<RecommendView,Recommend> {
     @Override
-    protected Observable<Recommend> getData() {
+    protected Observable<Recommend> getData(RequestParams params) {
         return ApiManager.getInstance().getRecommend();
     }
 

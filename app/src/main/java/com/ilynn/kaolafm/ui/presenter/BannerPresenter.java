@@ -1,6 +1,7 @@
 package com.ilynn.kaolafm.ui.presenter;
 
 import com.ilynn.kaolafm.api.ApiManager;
+import com.ilynn.kaolafm.api.RequestParams;
 import com.ilynn.kaolafm.bean.Banner;
 import com.ilynn.kaolafm.ui.base.CallBackPresenter;
 import com.ilynn.kaolafm.ui.view.BannerView;
@@ -18,7 +19,7 @@ import rx.Observable;
 public class BannerPresenter extends CallBackPresenter<BannerView, Banner> {
 
     @Override
-    public Observable getData() {
+    public Observable getData(RequestParams params) {
         return ApiManager.getInstance().getBanner();
     }
 

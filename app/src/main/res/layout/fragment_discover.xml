@@ -1,20 +1,12 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context="com.ilynn.kaolafm.ui.fragment.DiscoverFragment">
-
-    <LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context="com.ilynn.kaolafm.ui.fragment.DiscoverFragment">
+    <TextView
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textview"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@color/line"
-            android:gravity="center"
-            android:text="发现"/>
-    </LinearLayout>
-</ScrollView>
+        android:gravity="center"
+        android:text="发现"/>
+</LinearLayout>

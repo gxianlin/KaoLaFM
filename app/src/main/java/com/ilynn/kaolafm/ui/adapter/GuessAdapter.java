@@ -24,8 +24,6 @@ import com.ilynn.kaolafm.bean.Special;
 
 import java.util.List;
 
-import jp.wasabeef.glide.transformations.BlurTransformation;
-
 /**
  * 描述：推荐页面 猜一猜适配器
  * 作者：gong.xl
@@ -75,7 +73,6 @@ public class GuessAdapter extends BaseAdapter {
         }
         Glide.with(mContext)
                 .load(mSpecials.get(position).getPic())
-                .bitmapTransform(new BlurTransformation(mContext))
                 .into(holder.iv);
         holder.title.setText(mSpecials.get(position).getRname());
         holder.info.setText(mSpecials.get(position).getDes());

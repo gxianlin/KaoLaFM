@@ -106,8 +106,9 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
             return;
         }
         //加载数据
-        setListener();
         initData();
+
+        setListener();
         //设置已经不是第一次加载
         isFirstLoad = false;
     }

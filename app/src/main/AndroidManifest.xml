@@ -9,9 +9,8 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
@@ -22,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.WelcomeActivity"
+        <activity
+            android:name=".ui.activity.WelcomeActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -31,14 +31,21 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.MainActivity"/>
+        <activity android:name=".ui.activity.Main2Activity"/>
         <activity android:name=".ui.activity.PlayActivity"/>
         <activity android:name=".ui.activity.ImageUpLoadActivity"/>
         <activity android:name="com.benmei.imageselectorlibrary.MultiImageSelectorActivity"/>
         <activity android:name=".ui.activity.WebActivity"/>
 
-        <meta-data android:value="5a02b755f43e485bc200018c" android:name="UMENG_APPKEY"/>
-        <meta-data android:value="${UMENG_CHANNEL_VALUE}" android:name="UMENG_CHANNEL"/>
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5a02b755f43e485bc200018c"/>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}"/>
 
+        <activity android:name=".ui.activity.TypeListActivity">
+        </activity>
     </application>
 
 </manifest>

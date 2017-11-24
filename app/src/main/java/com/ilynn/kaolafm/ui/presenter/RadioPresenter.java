@@ -5,13 +5,14 @@ import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 import com.ilynn.base.util.LogUtils;
 import com.ilynn.kaolafm.api.ApiManager;
+import com.ilynn.kaolafm.api.RequestParams;
 import com.ilynn.kaolafm.bean.DataListBean;
 import com.ilynn.kaolafm.bean.RadioBean;
 import com.ilynn.kaolafm.bean.RadioHost;
 import com.ilynn.kaolafm.bean.Special;
-import com.ilynn.kaolafm.utils.BeanHelper;
 import com.ilynn.kaolafm.ui.base.CallBackPresenter;
 import com.ilynn.kaolafm.ui.view.RadioView;
+import com.ilynn.kaolafm.utils.BeanHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ import rx.Observable;
  */
 public class RadioPresenter extends CallBackPresenter<RadioView, RadioBean> {
     @Override
-    protected Observable<RadioBean> getData() {
+    protected Observable<RadioBean> getData(RequestParams params) {
         return ApiManager.getInstance().getRadio();
     }
 

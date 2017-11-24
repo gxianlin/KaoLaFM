@@ -61,12 +61,16 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         setContentView(getLayoutId());
         setStatusBar();
         ButterKnife.inject(this);
+        onInstanceState(savedIntanceState);
         receiveData();
         initViews();
         setListener();
         initData();
     }
 
+    public void onInstanceState(Bundle savedIntanceState){
+
+    }
     protected void setStatusBar() {
         //设置状态栏字体颜色为深色
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

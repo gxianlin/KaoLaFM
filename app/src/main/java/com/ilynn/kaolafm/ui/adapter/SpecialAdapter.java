@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.ilynn.base.util.DensityUtil;
 import com.ilynn.kaolafm.R;
 import com.ilynn.kaolafm.bean.Special;
 
@@ -28,8 +29,11 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 public class SpecialAdapter extends BaseAdapter {
     private List<Special> mSpecials;
     private Context mContext;
+    private final int mImageWidth;
 
     public SpecialAdapter(Context context, List<Special> specials) {
+        int screenWidth = DensityUtil.getScreenWidth(context);
+        mImageWidth = (screenWidth - DensityUtil.dp2px(20)) / 3;
         mSpecials = specials;
         mContext = context;
     }
@@ -56,6 +60,10 @@ public class SpecialAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_specil, parent, false);
             holder = new ViewHolder();
             holder.image = (ImageView) convertView.findViewById(R.id.specil_iv);
+            ViewGroup.LayoutParams layoutParams = holder.image.getLayoutParams();
+            layoutParams.width = mImageWidth;
+            layoutParams.height = mImageWidth;
+            holder.image.setLayoutParams(layoutParams);
             holder.title = (TextView) convertView.findViewById(R.id.specil_title);
             holder.type = (TextView) convertView.findViewById(R.id.specil_type);
             convertView.setTag(holder);

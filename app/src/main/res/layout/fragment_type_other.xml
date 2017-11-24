@@ -1,0 +1,15 @@
+<GridView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gridview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:numColumns="2"
+    android:listSelector="@android:color/transparent"
+    android:stretchMode="columnWidth"
+    android:horizontalSpacing="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:verticalSpacing="10dp"
+    android:clipToPadding="true"
+    tools:context="com.ilynn.kaolafm.ui.fragment.TypeHotFragment"/>

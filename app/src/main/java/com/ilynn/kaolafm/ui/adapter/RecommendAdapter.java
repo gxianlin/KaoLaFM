@@ -1,6 +1,5 @@
 package com.ilynn.kaolafm.ui.adapter;
 
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.GridView;
@@ -14,7 +13,11 @@ import com.ilynn.kaolafm.R;
 import com.ilynn.kaolafm.bean.DataListBean;
 import com.ilynn.kaolafm.bean.Special;
 import com.ilynn.kaolafm.config.LayoutType;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,9 +46,37 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<DataListBean<Lis
         switch (helper.getItemViewType()) {
             case LayoutType.BANNER:
                 //轮播图
-                ViewPager viewpager = helper.getView(R.id.header_viewpager);
-                viewpager.setAdapter(new BannerPageAdapter(mContext, item.getDataList()));
-                viewpager.setCurrentItem(Integer.MAX_VALUE / 2);//默认在中间，使用户看不到边界
+                Banner banner = helper.getView(R.id.banner);
+                banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
+                //设置图片加载器
+                banner.setImageLoader(new com.ilynn.kaolafm.utils.GlideImageLoader(true));
+
+                //设置banner动画效果
+                banner.setBannerAnimation(Transformer.DepthPage);
+
+                //设置自动轮播，默认为true
+                banner.isAutoPlay(true);
+                //设置轮播时间
+                banner.setDelayTime(2000);
+                //设置指示器位置（当banner模式中有指示器时）
+                banner.setIndicatorGravity(BannerConfig.RIGHT);
+
+                ArrayList<String> imageList = new ArrayList<>();
+                ArrayList<String> titles = new ArrayList<>();
+                for (Special s : item.getDataList()) {
+                    imageList.add(s.getPic());
+                    titles.add(s.getDes());
+                }
+
+                //设置图片集合
+                banner.setImages(imageList);
+
+                //设置标题集合（当banner样式有显示title时）
+                banner.setBannerTitles(titles);
+
+                //banner设置方法全部调用完毕时最后调用
+                banner.start();
+
                 break;
             case LayoutType.ENTRY:
                 //快捷入口

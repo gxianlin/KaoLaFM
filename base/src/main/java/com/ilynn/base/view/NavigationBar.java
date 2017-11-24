@@ -34,11 +34,20 @@ import java.util.List;
 public class NavigationBar extends LinearLayout implements View.OnClickListener {
     private static final String KEY_CURRENT_TAG = "com.startsmake.template.currentTag";
 
-
-    private List<ViewHolder> mViewHolderList;
     private OnTabSelectedListener mTabSelectListener;
+    private OnTabChangeListener mTabChangeListener;
     private FragmentActivity mFragmentActivity;
+
+
+    /**
+     * 菜单集合
+     */
+    private List<ViewHolder> mViewHolderList;
+
+    //当前
     private String mCurrentTag;
+
+    //需要恢复
     private String mRestoreTag;
 
     /**
@@ -66,8 +75,11 @@ public class NavigationBar extends LinearLayout implements View.OnClickListener 
      */
     private int mMainContentLayoutId;
 
+    /**
+     * 当前选中的页面
+     */
     private int mCurrentSelectedTab;
-    private OnTabChangeListener mTabChangeListener;
+
 
     public NavigationBar(Context context) {
         this(context, null);
@@ -91,7 +103,7 @@ public class NavigationBar extends LinearLayout implements View.OnClickListener 
         mSelectedTextColor = (selectedTabTextColor != null ? selectedTabTextColor : context.getResources()
                 .getColorStateList(R.color.tab_text_selected));
 
-        mMainContentLayoutId = typedArray.getResourceId(R.styleable.NavigateBar_containerId, 0);
+//        mMainContentLayoutId = typedArray.getResourceId(R.styleable.NavigateBar_containerId, 0);
 
         mViewHolderList = new ArrayList<>();
     }
@@ -153,6 +165,7 @@ public class NavigationBar extends LinearLayout implements View.OnClickListener 
             mViewHolderList.add(holder);
         }
 
+        //添加
         addView(view, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 1.0F));
 
     }
@@ -192,9 +205,14 @@ public class NavigationBar extends LinearLayout implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         Object object = v.getTag();
+        //判断被点击的View是否是我们定义的ViewHolder
         if (object != null && object instanceof ViewHolder) {
+
             ViewHolder holder = (ViewHolder) v.getTag();
+            //显示点击菜单对应的fragment
             showFragment(holder);
+
+            //如果设置了点击监听事件则回调
             if (mTabSelectListener != null) {
                 mTabSelectListener.onTabSelected(holder);
             }
@@ -211,10 +229,12 @@ public class NavigationBar extends LinearLayout implements View.OnClickListener 
      * @param holder
      */
     public void showFragment(ViewHolder holder) {
+        //获取事物
         FragmentTransaction transaction = mFragmentActivity.getSupportFragmentManager().beginTransaction();
         if (isFragmentShown(transaction, holder.tag)) {
             return;
         }
+
         setCurrSelectedTabByTag(holder.tag);
 
         Fragment fragment = mFragmentActivity.getSupportFragmentManager().findFragmentByTag(holder.tag);
@@ -360,16 +380,30 @@ public class NavigationBar extends LinearLayout implements View.OnClickListener 
         mMainContentLayoutId = frameLayoutId;
     }
 
+
+    /**
+     * 恢复状态
+     *
+     * @param savedInstanceState
+     */
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             mRestoreTag = savedInstanceState.getString(KEY_CURRENT_TAG);
         }
     }
 
+    /**
+     * 保存状态
+     *
+     * @param outState
+     */
     public void onSaveInstanceState(Bundle outState) {
         outState.putString(KEY_CURRENT_TAG, mCurrentTag);
     }
 
+    /**
+     * 菜单ViewHolder
+     */
     public static class ViewHolder {
         public String tag;
         public TabParam pageParam;
@@ -381,7 +415,7 @@ public class NavigationBar extends LinearLayout implements View.OnClickListener 
 
 
     /**
-     * 导航栏菜单
+     * 导航栏菜单属性
      */
     public static class TabParam {
         public int backgroundColor = android.R.color.white;

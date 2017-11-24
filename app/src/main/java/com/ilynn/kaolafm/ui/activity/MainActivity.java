@@ -1,32 +1,19 @@
 package com.ilynn.kaolafm.ui.activity;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.PixelFormat;
-import android.os.Handler;
-import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ilynn.base.BaseActivity;
-import com.ilynn.base.util.DensityUtil;
-import com.ilynn.base.util.LogUtils;
 import com.ilynn.kaolafm.R;
 import com.ilynn.kaolafm.ui.adapter.MainPageAdapter;
-import com.ilynn.kaolafm.ui.custom.PlayView;
-import com.ilynn.kaolafm.ui.fragment.DiscoverFragment;
 import com.ilynn.kaolafm.ui.fragment.HomeFragment;
 import com.ilynn.kaolafm.ui.fragment.MineFragment;
 import com.ilynn.kaolafm.ui.fragment.OfflineFragment;
+import com.ilynn.kaolafm.ui.fragment.TypeFragment;
 
 import java.util.ArrayList;
 
@@ -51,17 +38,17 @@ public class MainActivity extends BaseActivity {
     ArrayList<View> tabs = new ArrayList<>();
 
     // 定义一个变量，来标识是否退出
-    private static boolean isExit = false;
+//    private static boolean isExit = false;
 
-    @SuppressLint("HandlerLeak")
-    Handler mHandler = new Handler() {
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            isExit = false;
-        }
-    };
+//    @SuppressLint("HandlerLeak")
+//    Handler mHandler = new Handler() {
+//
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//            isExit = false;
+//        }
+//    };
 
     @Override
     public int getLayoutId() {
@@ -71,39 +58,19 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initViews() {
         mMainTablayout.addTab(mMainTablayout.newTab().setCustomView(tab_icon("首页", R.drawable.main_btn_discover)));
-        mMainTablayout.addTab(mMainTablayout.newTab().setCustomView(tab_icon("发现", R.drawable.main_btn_manage)));
-        //添加中间一个空按钮用于占位
-        mMainTablayout.addTab(mMainTablayout.newTab().setCustomView(null));
+        mMainTablayout.addTab(mMainTablayout.newTab().setCustomView(tab_icon("分类", R.drawable.main_btn_manage)));
         mMainTablayout.addTab(mMainTablayout.newTab().setCustomView(tab_icon("离线", R.drawable.main_btn_offline)));
         mMainTablayout.addTab(mMainTablayout.newTab().setCustomView(tab_icon("我的", R.drawable.main_btn_mine)));
-
-        //设置空按钮不可点击
-        LinearLayout child = (LinearLayout) mMainTablayout.getChildAt(0);
-        child.getChildAt(2).setClickable(false);
-        //        initButton();
     }
 
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+    }
 
     @Override
     public void initData() {
         setCustomViewPager();
-
-
-        //接收携带参数,之前是传递的2
-        int tag = getIntent().getIntExtra("tag", -1);
-        //调用此方法需在viewpager初始化完毕之后
-
-        if(tag != -1) {
-            //让viewpager选中第三个页面
-            mMainViewpager.setCurrentItem(tag);
-        }
-
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        LogUtils.e(TAG, "Activity requestCode = " + requestCode + ",resultCode = " + resultCode);
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -111,10 +78,7 @@ public class MainActivity extends BaseActivity {
         mMainTablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                int position = tab.getPosition();
-                if (position > 2)
-                    position--;
-                mMainViewpager.setCurrentItem(position);
+                mMainViewpager.setCurrentItem(tab.getPosition());
             }
 
             @Override
@@ -158,7 +122,7 @@ public class MainActivity extends BaseActivity {
     private void setCustomViewPager() {
         MainPageAdapter adapter = new MainPageAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment());
-        adapter.addFragment(new DiscoverFragment());
+        adapter.addFragment(new TypeFragment());
         adapter.addFragment(new OfflineFragment());
         adapter.addFragment(new MineFragment());
         mMainViewpager.setAdapter(adapter);
@@ -175,72 +139,8 @@ public class MainActivity extends BaseActivity {
         return newtab;
     }
 
-
-    private WindowManager wm = null;
-    private WindowManager.LayoutParams wmParams = null;
-    private PlayView leftbtn = null;
-
-
-    private void initButton() {
-        //获取WindowManager
-        wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-        //设置LayoutParams(全局变量）相关参数
-        wmParams = new WindowManager.LayoutParams(
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_PHONE,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
-                PixelFormat.TRANSLUCENT);
-        //设置悬浮窗口长宽数据
-        wmParams.width = DensityUtil.dp2px(55);
-        wmParams.height = DensityUtil.dp2px(70);
-        createLeftFloatView();
-        leftbtn.invalidate();
-    }
-
-    /**
-     * 创建悬浮按钮
-     */
-    private void createLeftFloatView() {
-        leftbtn = new PlayView(getApplicationContext());
-        leftbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LogUtils.e("点击悬浮按钮");
-            }
-        });
-        //调整悬浮窗口
-        wmParams.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
-        //显示myFloatView图像
-        wm.addView(leftbtn, wmParams);
-    }
-
-    @Override
-    protected void onDestroy() {
-
-        if (leftbtn != null && wm != null) {
-            wm.removeView(leftbtn);
-        }
-        super.onDestroy();
-    }
-
-    public void setCurrent(int index) {
-        if (mMainViewpager != null) {
-            mMainViewpager.setCurrentItem(index);
-        }
-    }
-
     @Override
     public void onKeyBack() {
-        if (!isExit) {
-            isExit = true;
-            Toast.makeText(getApplicationContext(), "再按一次退出程序",
-                    Toast.LENGTH_SHORT).show();
-            // 利用handler延迟发送更改状态信息
-            mHandler.sendEmptyMessageDelayed(0, 2000);
-        } else {
-            finish();
-            System.exit(0);
-        }
+        finish();
     }
 }
