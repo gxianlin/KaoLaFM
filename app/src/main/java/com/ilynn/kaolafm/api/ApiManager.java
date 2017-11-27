@@ -7,6 +7,7 @@ import com.ilynn.kaolafm.bean.Banner;
 import com.ilynn.kaolafm.bean.BroadCastBean;
 import com.ilynn.kaolafm.bean.RadioBean;
 import com.ilynn.kaolafm.bean.Recommend;
+import com.ilynn.kaolafm.bean.TypeList;
 import com.ilynn.kaolafm.bean.TypeMenu;
 import com.ilynn.kaolafm.bean.TypeTabs;
 import com.ilynn.kaolafm.config.Url;
@@ -133,11 +134,22 @@ public class ApiManager {
     /**
      * 请求分类列表tabs
      *
-     * @param fid
+     * @param fid id
      * @return
      */
     public Observable<TypeTabs> getTypeTabs(String fid) {
         return apiService.getTypeTabs(fid).compose(RxResultHelper.<TypeTabs>result());
+    }
+
+    /**
+     * 请求分类列表tabs
+     *
+     * @param cid     id
+     * @param pagenum 页码
+     * @return
+     */
+    public Observable<TypeList> getTypeList(int cid, int pagenum) {
+        return apiService.getTypeList(cid, pagenum).compose(RxResultHelper.<TypeList>result());
     }
 
     public Call<ResponseBody> getBody() {

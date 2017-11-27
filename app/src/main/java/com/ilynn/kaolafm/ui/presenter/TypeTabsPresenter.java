@@ -18,10 +18,11 @@ import rx.Observable;
  * 邮箱：gong.xl@wonhigh.cn
  */
 
-public class TypeTabsPresenter extends CallBackPresenter<TypeTabsView,TypeTabs> {
+public class TypeTabsPresenter extends CallBackPresenter<TypeTabsView, TypeTabs> {
     @Override
     protected Observable<TypeTabs> getData(RequestParams params) {
-        return ApiManager.getInstance().getTypeTabs((String) params.get(Constants.FID));
+        String fid = params.get(Constants.FID);
+        return ApiManager.getInstance().getTypeTabs(fid);
     }
 
     @Override

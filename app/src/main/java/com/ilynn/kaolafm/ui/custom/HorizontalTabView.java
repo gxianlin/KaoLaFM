@@ -1,9 +1,7 @@
 package com.ilynn.kaolafm.ui.custom;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -12,12 +10,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ilynn.base.util.DensityUtil;
+import com.ilynn.kaolafm.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 描述：TODO
+ * 描述：自定义tab菜单栏
  * 作者：gong.xl
  * 创建日期：2017/11/24 下午3:30
  * 修改日期: 2017/11/24
@@ -25,7 +24,8 @@ import java.util.List;
  * 邮箱：gong.xl@wonhigh.cn
  */
 
-public class HorizontalTabView extends HorizontalScrollView {
+public class HorizontalTabView extends HorizontalScrollView implements View.OnClickListener, ViewPager
+        .OnPageChangeListener {
     private Context mContext;
 
     //小滑块
@@ -40,10 +40,28 @@ public class HorizontalTabView extends HorizontalScrollView {
     //tab控件经济和
     private List<TextView> mTabViews;
 
+    //滑块及选中字体颜色
+    private int mSlipColor;
 
-    //测量字符串宽度的画笔
-    private Paint mPaint;
-    private int mPadding;
+    //默认字体颜色
+    private int mTextColor;
+
+    //tab单个宽度
+    private int mSlipWidth;
+    //tab高度
+    private int mSlipHeight;
+
+    //上一个选中的tabs
+    private int mLastPosition;
+
+    //绑定的viewPager
+    private ViewPager mViewPager;
+
+    //每个tab宽度
+    private int mTabWidth;
+
+    //小滑块指示器属性
+    private LinearLayout.LayoutParams mSlipParams;
 
     public HorizontalTabView(Context context) {
         this(context, null);
@@ -57,10 +75,12 @@ public class HorizontalTabView extends HorizontalScrollView {
         super(context, attrs, defStyleAttr);
         this.mContext = context;
 
-        mPaint = new Paint();
-        mPadding = DensityUtil.dp2px(10);
-
-
+        mSlipWidth = DensityUtil.dp2px(10);
+        mSlipHeight = DensityUtil.dp2px(3);
+        mSlipColor = context.getResources().getColor(R.color.head_bg);
+        mTextColor = context.getResources().getColor(R.color.text_color_2);
+        int mWidthDp = DensityUtil.getScreenWidthDp(context);
+        mTabWidth = DensityUtil.dp2px(mWidthDp / 5);
         addView(getLineaLayout());
     }
 
@@ -92,7 +112,7 @@ public class HorizontalTabView extends HorizontalScrollView {
         LinearLayout.LayoutParams slipParams = new LinearLayout.LayoutParams(DensityUtil.dp2px(50), DensityUtil.dp2px
                 (5));
         slipParams.leftMargin = DensityUtil.dp2px(25);
-        mSlipView.setBackgroundColor(Color.RED);
+        slipParams.topMargin = DensityUtil.dp2px(-7);
         mSlipView.setLayoutParams(slipParams);
         parent.addView(mTabsLayout);
         parent.addView(mSlipView);
@@ -104,41 +124,110 @@ public class HorizontalTabView extends HorizontalScrollView {
     /**
      * 设置数据
      *
-     * @param tabs
+     * @param tabs tabs数据
      */
     public void setTabs(List<String> tabs) {
-        this.mTabs = tabs;
-        addTabs();
+        setTabs(tabs, 0);
     }
 
-    private void addTabs() {
+    /**
+     * 设置数据
+     *
+     * @param tabs     tabs数据
+     * @param position 默认选中
+     */
+    public void setTabs(List<String> tabs, int position) {
+        this.mTabs = tabs;
+        mLastPosition = position;
+        addTabs(position);
+    }
+
+
+    private void addTabs(int position) {
+
+        //设置滑块属性
+        int length = mTabs.get(position).length();
+        mSlipParams = (LinearLayout.LayoutParams) mSlipView.getLayoutParams();
+        mSlipParams.width = mSlipWidth * length;
+        mSlipParams.height = mSlipHeight;
+        mSlipParams.leftMargin = (mTabWidth * position) + (mTabWidth - mSlipParams.width) / 2;
+        mSlipView.setLayoutParams(mSlipParams);
+        mSlipView.setBackgroundColor(mSlipColor);
+
+        //添加tab
         mTabViews = new ArrayList<>();
         mTabsLayout.removeAllViews();
         for (int i = 0; i < mTabs.size(); i++) {
             TextView tab = new TextView(mContext);
-            LinearLayout.LayoutParams tabParams = new LinearLayout.LayoutParams(DensityUtil.dp2px(100), LinearLayout
+            LinearLayout.LayoutParams tabParams = new LinearLayout.LayoutParams(mTabWidth, LinearLayout
                     .LayoutParams.MATCH_PARENT);
             tab.setLayoutParams(tabParams);
+            tab.setTextSize(15);
             tab.setGravity(Gravity.CENTER);
-            tab.setTextSize(14);
-            tab.setPadding(mPadding, 0, mPadding, 0);
+            if (i == position) {
+                tab.setTextColor(mSlipColor);
+            } else {
+                tab.setTextColor(mTextColor);
+            }
+            tab.setTag(i);
             tab.setText(mTabs.get(i));
-            tab.setTextColor(Color.BLACK);
+            tab.setOnClickListener(this);
             mTabsLayout.addView(tab);
             mTabViews.add(tab);
         }
     }
 
 
-    /**
-     * 获取文本宽度
-     *
-     * @param text
-     * @return
-     */
-    private int getTextWidth(String text) {
-        Rect rect = new Rect();
-        mPaint.getTextBounds(text, 0, text.length(), rect);
-        return rect.width();
+    @Override
+    public void onClick(View v) {
+        int position = (int) v.getTag();
+        if (position == mLastPosition) {
+            return;
+        }
+
+        //获取点击的按钮
+        mTabViews.get(position).setTextColor(mSlipColor);
+        mTabViews.get(mLastPosition).setTextColor(mTextColor);
+
+        if (mViewPager != null) {
+            mViewPager.setCurrentItem(position);
+        }
+
+        mLastPosition = position;
     }
+
+    public void setViewPager(ViewPager viewPager) {
+        if (viewPager == null) {
+            return;
+        }
+        mViewPager = viewPager;
+        mViewPager.addOnPageChangeListener(this);
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        if (positionOffsetPixels != 0) {
+            int lengthCurren = mTabs.get(position).length();
+            int lengthNext = mTabs.get(position + 1).length();
+            mSlipParams.leftMargin = (int) (mTabWidth * (position + positionOffset) + (mTabWidth - mSlipParams
+                    .width) / 2);
+            mSlipParams.width = (int) (mSlipWidth * (lengthCurren + (lengthNext - lengthCurren) * positionOffset));
+            mSlipView.setLayoutParams(mSlipParams);
+        }
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        mTabViews.get(position).setTextColor(mSlipColor);
+        mTabViews.get(mLastPosition).setTextColor(mTextColor);
+        mLastPosition = position;
+        //设置水平滚动条滚动,使得当标题过多是,滑动不会滑动到屏幕之外
+        smoothScrollTo((position - 2) * mTabWidth, 0);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
 }

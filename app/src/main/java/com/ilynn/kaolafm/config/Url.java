@@ -32,7 +32,8 @@ public interface Url {
     String TYPE_TABS = "category/list?";
 
     //分类列表
-    String TYPE_LIST = "resource/adsearch?words=&cid={cid}&sorttype=HOT_RANK_DESC&pagesize=10&pagenum={pagenum}";
+//    String TYPE_LIST = "resource/adsearch?words=&cid={cid}&sorttype=HOT_RANK_DESC&pagesize=10&pagenum={pagenum}";
+    String TYPE_LIST = "resource/adsearch?words=&sorttype=HOT_RANK_DESC&pagesize=10&";
 
     //分类精选页面
     String CHOICE = "pagecontent/list?pageid={pageid}";

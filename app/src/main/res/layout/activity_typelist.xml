@@ -18,9 +18,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:paddingBottom="9dp"
+            android:paddingBottom="12dp"
             android:paddingRight="9dp"
-            android:paddingTop="9dp"
+            android:paddingTop="12dp"
             android:src="@drawable/title_back"/>
 
         <TextView

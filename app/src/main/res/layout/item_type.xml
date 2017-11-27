@@ -7,10 +7,10 @@
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_gravity="center_vertical|right"
-        android:layout_margin="15dp"/>
+        android:layout_margin="12dp"/>
 
     <TextView
         android:id="@+id/name"

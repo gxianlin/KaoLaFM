@@ -2,8 +2,10 @@ package com.ilynn.kaolafm.ui.fragment;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.ilynn.base.util.DensityUtil;
 import com.ilynn.kaolafm.R;
 import com.ilynn.kaolafm.bean.DataListBean;
 import com.ilynn.kaolafm.bean.RadioHost;
@@ -66,6 +68,9 @@ public class RadioFragment extends BaseMVPFragment<RadioView, RadioPresenter> im
         mBanner.setDelayTime(2000);
         //设置指示器位置（当banner模式中有指示器时）
         mBanner.setIndicatorGravity(BannerConfig.RIGHT);
+        ViewGroup.LayoutParams layoutParams = mBanner.getLayoutParams();
+        layoutParams.height = DensityUtil.getScreenWidth(mContext)/2;
+        mBanner.setLayoutParams(layoutParams);
 
     }
 

@@ -2,6 +2,7 @@ package com.ilynn.kaolafm.ui.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -9,6 +10,7 @@ import android.widget.ListView;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.ilynn.base.util.DensityUtil;
 import com.ilynn.kaolafm.R;
 import com.ilynn.kaolafm.bean.DataListBean;
 import com.ilynn.kaolafm.bean.Special;
@@ -47,6 +49,11 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<DataListBean<Lis
             case LayoutType.BANNER:
                 //轮播图
                 Banner banner = helper.getView(R.id.banner);
+
+                ViewGroup.LayoutParams layoutParams = banner.getLayoutParams();
+                layoutParams.height = DensityUtil.getScreenWidth(mContext) / 2;
+                banner.setLayoutParams(layoutParams);
+
                 banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
                 //设置图片加载器
                 banner.setImageLoader(new com.ilynn.kaolafm.utils.GlideImageLoader(true));

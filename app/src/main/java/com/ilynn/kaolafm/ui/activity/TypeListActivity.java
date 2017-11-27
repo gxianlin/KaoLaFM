@@ -9,8 +9,10 @@ import com.ilynn.base.util.ToastUtil;
 import com.ilynn.kaolafm.R;
 import com.ilynn.kaolafm.bean.TypeTabs;
 import com.ilynn.kaolafm.config.Constants;
+import com.ilynn.kaolafm.ui.adapter.MainPageAdapter;
 import com.ilynn.kaolafm.ui.base.BaseMVPActivity;
 import com.ilynn.kaolafm.ui.custom.HorizontalTabView;
+import com.ilynn.kaolafm.ui.fragment.TypeListFragment;
 import com.ilynn.kaolafm.ui.presenter.TypeTabsPresenter;
 import com.ilynn.kaolafm.ui.view.TypeTabsView;
 
@@ -25,9 +27,11 @@ public class TypeListActivity extends BaseMVPActivity<TypeTabsView, TypeTabsPres
     @InjectView(R.id.title)
     TextView mTitle;
     @InjectView(R.id.viewpager)
-    ViewPager mViewpager;
+    ViewPager mViewPager;
     @InjectView(R.id.tabs)
     HorizontalTabView mTabsView;
+    private MainPageAdapter mAdapter;
+
 
     @Override
     public int getLayoutId() {
@@ -59,11 +63,13 @@ public class TypeListActivity extends BaseMVPActivity<TypeTabsView, TypeTabsPres
         mParams.put(Constants.FID, fid);
         mPresenter.loadData(mParams, false);
         //判断是否需要添加精选页面
+        mAdapter = new MainPageAdapter(getSupportFragmentManager());
+        mViewPager.setAdapter(mAdapter);
     }
 
     @Override
     public void setListener() {
-
+        mTabsView.setViewPager(mViewPager);
     }
 
 
@@ -91,9 +97,13 @@ public class TypeListActivity extends BaseMVPActivity<TypeTabsView, TypeTabsPres
     public void onTabsSuccess(TypeTabs tabs) {
         List<TypeTabs.DataListBean> dataList = tabs.getDataList();
         List<String> tabNames = new ArrayList<>();
+
+        //根据标题个数添加相应的标题栏和fragment
         for (TypeTabs.DataListBean bean : dataList) {
             tabNames.add(bean.getCategoryName());
+            mAdapter.addFragment(TypeListFragment.newInstance(bean.getCategoryId()));
         }
         mTabsView.setTabs(tabNames);
+        mAdapter.notifyDataSetChanged();
     }
 }

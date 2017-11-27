@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * 描述：网络请求参数
- *
+ * <p>
  * 作者：gong.xl
  * 创建日期：2017/9/12 下午5:05
  * 修改日期: 2017/9/12
@@ -15,7 +15,7 @@ import java.util.Map;
  * 邮箱：gong.xl@wonhigh.cn
  */
 public class RequestParams {
-    private Map<String,Object> mMap;
+    private Map<String, Object> mMap;
 
     private String apiKey;
 
@@ -28,19 +28,32 @@ public class RequestParams {
         mMap = new HashMap<>();
     }
 
-    public void put(String key,Object values){
-        if (mMap != null){
-            mMap.put(key,values);
+    public void put(String key, Object values) {
+        if (mMap != null) {
+            mMap.put(key, values);
         }
     }
 
-    public Object get(String key){
-        if (mMap != null){
-            return mMap.get(key);
-        }else {
+    /**
+     * @param key
+     * @param <E>
+     * @return
+     */
+    public <E extends Object> E get(String key) {
+        if (mMap != null) {
+            return (E) mMap.get(key);
+        } else {
             return null;
         }
     }
+
+    //    public Object get(String key){
+    //        if (mMap != null){
+    //            return mMap.get(key);
+    //        }else {
+    //            return null;
+    //        }
+    //    }
 
     @Override
     public String toString() {
@@ -52,7 +65,7 @@ public class RequestParams {
             mIterator = mMap.entrySet().iterator();
             while (mIterator.hasNext()) {
                 Map.Entry<String, Object> entry = (Map.Entry<String, Object>) mIterator.next();
-//                String key = entry.getKey().toString();
+                //                String key = entry.getKey().toString();
                 String value = entry.getValue().toString();
                 sb.append("-" + value);
             }

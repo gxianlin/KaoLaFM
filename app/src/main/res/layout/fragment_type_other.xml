@@ -7,9 +7,10 @@
     android:numColumns="2"
     android:listSelector="@android:color/transparent"
     android:stretchMode="columnWidth"
-    android:horizontalSpacing="10dp"
+    android:horizontalSpacing="8dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    android:verticalSpacing="10dp"
+    android:verticalSpacing="8dp"
     android:clipToPadding="true"
+    android:scrollbars="none"
     tools:context="com.ilynn.kaolafm.ui.fragment.TypeHotFragment"/>

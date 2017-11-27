@@ -12,7 +12,6 @@ import com.ilynn.kaolafm.bean.TypeTabs;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -60,5 +59,5 @@ public interface ApiService {
     Observable<BaseResult<TypeTabs>> getTypeTabs(@Query("fid") String fid);
 
     @GET(TYPE_LIST)
-    Observable<BaseResult<TypeList>> getTypeList(@Path("cid") String cid, @Path("pagenum") String pagenum);
+    Observable<BaseResult<TypeList>> getTypeList(@Query("cid") int cid, @Query("pagenum") int pagenum);
 }
