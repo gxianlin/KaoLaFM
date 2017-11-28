@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/refresh_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="下拉刷新"/>
+
+    <ImageView
+        android:id="@+id/refresh_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="60dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/loading"/>
+
+    <TextView
+        android:id="@+id/refresh_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="上次刷新时间:2017.11.11 11:11:11"
+        android:textSize="10sp"/>
+</LinearLayout>

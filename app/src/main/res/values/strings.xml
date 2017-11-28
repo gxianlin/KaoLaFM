@@ -8,4 +8,5 @@
     <string name="back">返回</string>
     <string name="type_hot">热门</string>
     <string name="type_other">其他</string>
+    <string name="load_text">正在努力加载</string>
 </resources>

@@ -2,10 +2,15 @@ package com.ilynn.kaolafm.ui.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.ilynn.kaolafm.R;
 import com.ilynn.kaolafm.bean.TypeList;
+import com.ilynn.kaolafm.utils.ImageUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +36,14 @@ public class TypeListAdapter extends RecyclerView.Adapter<TypeListAdapter.ViewHo
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_type_list, parent, false));
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+        ImageUtil.GlideWith(mContext, mDataList.get(position).getPic(), holder.icon);
+        holder.title.setText(mDataList.get(position).getName());
+        holder.content.setText(mDataList.get(position).getDesc());
     }
 
     /**
@@ -64,6 +71,13 @@ public class TypeListAdapter extends RecyclerView.Adapter<TypeListAdapter.ViewHo
     }
 
     /**
+     * 清空数据
+     */
+    public void clearData(){
+        mDataList.clear();
+    }
+
+    /**
      * 添加数据
      *
      * @param bean
@@ -83,8 +97,15 @@ public class TypeListAdapter extends RecyclerView.Adapter<TypeListAdapter.ViewHo
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        private ImageView icon;
+        private TextView title;
+        private TextView content;
+
         public ViewHolder(View itemView) {
             super(itemView);
+            icon = (ImageView) itemView.findViewById(R.id.icon);
+            title = (TextView) itemView.findViewById(R.id.title);
+            content = (TextView) itemView.findViewById(R.id.content);
         }
     }
 }

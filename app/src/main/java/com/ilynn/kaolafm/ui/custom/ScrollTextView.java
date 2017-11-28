@@ -30,118 +30,72 @@ public class ScrollTextView extends View {
     public static final float SPEED_LEVEL_2 = 2;
     public static final float SPEED_LEVEL_3 = 3;
 
-    /**
-     * 标题颜色(左边字体)
-     */
+    /**标题颜色(左边字体)*/
     private int mTitleTextColor;
 
-    /**
-     * 内容字体颜色(右边字体)
-     */
+    /**内容字体颜色(右边字体)*/
     private int mContentTextColor;
 
-    /**
-     * 字体大小
-     */
+    /**字体大小*/
     private int mTextSize;
 
-    /**
-     * 滚动一次文字停留(暂停)的时间
-     */
+    /**滚动一次文字停留(暂停)的时间*/
     private int mPauseTime = 2000;
 
-    /**
-     * 左边标题数据源
-     */
+    /**左边标题数据源*/
     private List<String> mTitleList;
 
-    /**
-     * 右边内容数据源
-     */
+    /**右边内容数据源*/
     private List<String> mContentList;
 
-    /**
-     * 当前的标题
-     */
+    /**当前的标题*/
     private String mCurrentTitle;
-    /**
-     * 当前内容
-     */
+    /**当前内容*/
     private String mCurrentContent;
-    /**
-     * 下一个标题
-     */
+    /**下一个标题*/
     private String mNextTitle;
 
-    /**
-     * 下一个内容
-     */
+    /**下一个内容*/
     private String mNextContent;
 
-    /**
-     * 控件的宽
-     */
+    /**控件的宽*/
     private int mWidth;
 
-    /**
-     * 控件的高
-     */
+    /**控件的高*/
     private int mHeight;
 
-    /**
-     * 绘制内容的起始位置X
-     */
+    /**绘制内容的起始位置X*/
     private float fromX;
 
-    /**
-     * 绘制内容的起始位置Y
-     */
+    /**绘制内容的起始位置Y*/
     private float fromY;
 
-    /**
-     * 暂停时初始Y坐标
-     */
+    /**暂停时初始Y坐标*/
     private float startY;
 
-    /**
-     * 矩形框内文字左右边距
-     */
+    /**矩形框内文字左右边距*/
     private int mTextPadding;
 
-    /**
-     * 每次滚动的距离
-     */
+    /** 每次滚动的距离*/
     private float mSpeed;
 
-    /**
-     * 当前显示的标题和内容是数据源中的第几条
-     */
+    /**当前显示的标题和内容是数据源中的第几条*/
     private int mPosition = -1;
 
 
-    /**
-     * 标题画笔
-     */
+    /**标题画笔*/
     private Paint mTitlePaint;
 
-    /**
-     * 内容画笔
-     */
+    /**内容画笔*/
     private Paint mContentPaint;
 
-    /**
-     * 边距
-     */
+    /**边距*/
     private float margin;
-    /**
-     * 是否已经开始滚动
-     */
+    /**是否已经开始滚动*/
     private boolean isStart;
 
 
-    /**
-     * 点击监听事件
-     */
+    /**点击监听事件*/
     private OnTextClickListener mTextClickListener;
 
 

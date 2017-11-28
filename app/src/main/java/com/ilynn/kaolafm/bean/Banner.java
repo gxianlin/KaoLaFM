@@ -12,15 +12,6 @@ import com.ilynn.kaolafm.cache.BaseCache;
  */
 public class Banner extends BaseCache {
 
-    /**
-     * showTime : 3
-     * img : http://img.kaolafm.net/mz/images/201709/af6891d9-6d14-44b9-9125-06f1adafbc37/720_1100.jpg
-     * actionType : 6
-     * action : https://www.fitapp.com.cn/task/108
-     * currentTime : null
-     * oid : 2959
-     */
-
     private int showTime;
     private String img;
     private int actionType;
