@@ -227,6 +227,7 @@ GET	http://api.kaolafm.com/api/v4/category/get/oldinfo
 
 	分类菜单
 GET	http://api.kaolafm.com/api/v4/category/get/broadinfo
+GET http://api.kaolafm.com/api/v4/category/get?id=32
 
 //
 GET	http://api.kaolafm.com/api/v4/radioplayinfo/list?radioid=1200000000232&clockid=&timezone=28800&installid=0004AnHA&udid=b2b131755acb81e8b9286139cccfbcb3&sessionid=b2b131755acb81e8b9286139cccfbcb31503047316577&operator=0&lon=113.938866&lat=22.506449&network=1&timestamp=1503047325&sign=cc5a7f071d4310b057d28e4b58a74cb2&resolution=800*1280&devicetype=0&channel=A-myapp&version=5.0.2&appid=0&

@@ -82,8 +82,7 @@ public class TypeOtherFragment extends BaseMVPFragment<TypeOtherView, TypOtherPr
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(mContext, TypeListActivity.class);
-        Bundle bundle = new Bundle();
-        intent.putExtra(Constants.FID, String.valueOf(mMenuList.get(position).getCategoryId()));
+        intent.putExtra(Constants.FID, mMenuList.get(position).getCategoryId());
         intent.putExtra(Constants.TITLE, mMenuList.get(position).getTitle());
         startActivity(intent);
     }

@@ -2,12 +2,15 @@ package com.ilynn.kaolafm.ui.presenter;
 
 import com.ilynn.kaolafm.api.ApiManager;
 import com.ilynn.kaolafm.api.RequestParams;
+import com.ilynn.kaolafm.bean.TypeId;
+import com.ilynn.kaolafm.bean.TypePageConfig;
 import com.ilynn.kaolafm.bean.TypeTabs;
 import com.ilynn.kaolafm.config.Constants;
 import com.ilynn.kaolafm.ui.base.CallBackPresenter;
-import com.ilynn.kaolafm.ui.view.TypeTabsView;
+import com.ilynn.kaolafm.ui.view.TypeConfigView;
 
 import rx.Observable;
+import rx.functions.Func2;
 
 /**
  * 描述：TODO
@@ -18,15 +21,28 @@ import rx.Observable;
  * 邮箱：gong.xl@wonhigh.cn
  */
 
-public class TypeTabsPresenter extends CallBackPresenter<TypeTabsView, TypeTabs> {
+public class TypeTabsPresenter extends CallBackPresenter<TypeConfigView, TypePageConfig> {
     @Override
-    protected Observable<TypeTabs> getData(RequestParams params) {
-        String fid = params.get(Constants.FID);
-        return ApiManager.getInstance().getTypeTabs(fid);
+    protected Observable<TypePageConfig> getData(RequestParams params) {
+        int fid = params.get(Constants.FID);
+
+        Observable<TypeTabs> typeTabs = ApiManager.getInstance().getTypeTabs(fid);
+        Observable<TypeId> typeIds = ApiManager.getInstance().getTypeIds(fid);
+
+
+        return Observable.zip(typeTabs, typeIds, new Func2<TypeTabs, TypeId, TypePageConfig>() {
+            @Override
+            public TypePageConfig call(TypeTabs typeTabs, TypeId typeId) {
+                return new TypePageConfig(typeTabs, typeId);
+            }
+        });
     }
 
     @Override
-    protected void setResult(TypeTabs data) {
-        mView.onTabsSuccess(data);
+    protected void setResult(TypePageConfig data) {
+
+        mView.onIdSuccess(data.getTypeId());
+
+        mView.onTabsSuccess(data.getTypeTabs());
     }
 }

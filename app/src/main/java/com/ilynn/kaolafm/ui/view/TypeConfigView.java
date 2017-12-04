@@ -1,5 +1,6 @@
 package com.ilynn.kaolafm.ui.view;
 
+import com.ilynn.kaolafm.bean.TypeId;
 import com.ilynn.kaolafm.bean.TypeTabs;
 import com.ilynn.kaolafm.ui.base.IView;
 
@@ -12,6 +13,8 @@ import com.ilynn.kaolafm.ui.base.IView;
  * 邮箱：gong.xl@wonhigh.cn
  */
 
-public interface TypeTabsView extends IView {
+public interface TypeConfigView extends IView {
     void onTabsSuccess(TypeTabs tabs);
+
+    void onIdSuccess(TypeId id);
 }

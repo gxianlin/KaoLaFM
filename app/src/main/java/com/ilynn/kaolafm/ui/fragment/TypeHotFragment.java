@@ -1,12 +1,16 @@
 package com.ilynn.kaolafm.ui.fragment;
 
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.ilynn.kaolafm.R;
 import com.ilynn.kaolafm.bean.TypeMenu;
+import com.ilynn.kaolafm.config.Constants;
+import com.ilynn.kaolafm.ui.activity.TypeListActivity;
 import com.ilynn.kaolafm.ui.adapter.TypeOtherMenuAdapter;
 import com.ilynn.kaolafm.ui.base.BaseMVPFragment;
 import com.ilynn.kaolafm.ui.presenter.TypeHotPresenter;
@@ -80,7 +84,10 @@ public class TypeHotFragment extends BaseMVPFragment<TypeHotView, TypeHotPresent
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        int categoryId = mMenuList.get(position).getCategoryId();
+        Intent intent = new Intent(mContext, TypeListActivity.class);
+        intent.putExtra(Constants.FID, mMenuList.get(position).getCategoryId());
+        intent.putExtra(Constants.TITLE, mMenuList.get(position).getTitle());
+        startActivity(intent);
 
     }
 }

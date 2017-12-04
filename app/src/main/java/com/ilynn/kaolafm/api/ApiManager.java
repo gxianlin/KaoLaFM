@@ -7,6 +7,7 @@ import com.ilynn.kaolafm.bean.Banner;
 import com.ilynn.kaolafm.bean.BroadCastBean;
 import com.ilynn.kaolafm.bean.RadioBean;
 import com.ilynn.kaolafm.bean.Recommend;
+import com.ilynn.kaolafm.bean.TypeId;
 import com.ilynn.kaolafm.bean.TypeList;
 import com.ilynn.kaolafm.bean.TypeMenu;
 import com.ilynn.kaolafm.bean.TypeTabs;
@@ -91,7 +92,7 @@ public class ApiManager {
      * @return
      */
     public Observable<Recommend> getRecommend() {
-        return apiService.getRecommend().compose(RxResultHelper.<Recommend>result());
+        return apiService.getRecommend(109).compose(RxResultHelper.<Recommend>result());
     }
 
     /**
@@ -137,9 +138,20 @@ public class ApiManager {
      * @param fid id
      * @return
      */
-    public Observable<TypeTabs> getTypeTabs(String fid) {
+    public Observable<TypeTabs> getTypeTabs(int fid) {
         return apiService.getTypeTabs(fid).compose(RxResultHelper.<TypeTabs>result());
     }
+
+    /**
+     * 请求分类列表精选页面id
+     *
+     * @param fid id
+     * @return
+     */
+    public Observable<TypeId> getTypeIds(int fid) {
+        return apiService.getTypeIds(fid).compose(RxResultHelper.<TypeId>result());
+    }
+
 
     /**
      * 请求分类列表tabs
@@ -152,7 +164,15 @@ public class ApiManager {
         return apiService.getTypeList(cid, pagenum).compose(RxResultHelper.<TypeList>result());
     }
 
-    public Call<ResponseBody> getBody() {
-        return apiService.getBody();
+
+    /**
+     * 请求热门分类精选页面
+     *
+     * @param pageId id
+     * @return
+     */
+    public Observable<Recommend> getRecommend(int pageId) {
+        return apiService.getRecommend(pageId).compose(RxResultHelper.<Recommend>result());
     }
+
 }

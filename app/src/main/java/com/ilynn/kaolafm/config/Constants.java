@@ -23,6 +23,7 @@ public class Constants {
      * 分类菜单跳转fid key
      */
     public final static String FID = "fid";
+    public final static String PAGE_ID = "pageid";
     public final static String CID = "cid";
     public final static String PAGENUM = "pagenum";
 

@@ -5,6 +5,7 @@ import com.ilynn.kaolafm.bean.BaseResult;
 import com.ilynn.kaolafm.bean.BroadCastBean;
 import com.ilynn.kaolafm.bean.RadioBean;
 import com.ilynn.kaolafm.bean.Recommend;
+import com.ilynn.kaolafm.bean.TypeId;
 import com.ilynn.kaolafm.bean.TypeList;
 import com.ilynn.kaolafm.bean.TypeMenu;
 import com.ilynn.kaolafm.bean.TypeTabs;
@@ -17,10 +18,12 @@ import rx.Observable;
 
 import static com.ilynn.kaolafm.config.Url.BANNER;
 import static com.ilynn.kaolafm.config.Url.BROADCAST;
+import static com.ilynn.kaolafm.config.Url.CHOICENESS;
 import static com.ilynn.kaolafm.config.Url.HOT_TYPE;
 import static com.ilynn.kaolafm.config.Url.OTHER_TYPE;
 import static com.ilynn.kaolafm.config.Url.RADIO;
 import static com.ilynn.kaolafm.config.Url.RECOMMEND;
+import static com.ilynn.kaolafm.config.Url.TYPE_IDS;
 import static com.ilynn.kaolafm.config.Url.TYPE_LIST;
 import static com.ilynn.kaolafm.config.Url.TYPE_TABS;
 
@@ -34,11 +37,14 @@ import static com.ilynn.kaolafm.config.Url.TYPE_TABS;
  */
 public interface ApiService {
 
+
+
+
     @GET(BANNER)
     Observable<BaseResult<Banner>> getBanner();
 
-    @GET(RECOMMEND)
-    Observable<BaseResult<Recommend>> getRecommend();
+    @GET(CHOICENESS)
+    Observable<BaseResult<Recommend>> getRecommend(@Query("pageid") int pageid);
 
     @GET(HOT_TYPE)
     Observable<BaseResult<TypeMenu>> getHotType();
@@ -52,11 +58,11 @@ public interface ApiService {
     @GET(RADIO)
     Observable<BaseResult<RadioBean>> getRadio();
 
-    @GET(BANNER)
-    Call<ResponseBody> getBody();
-
     @GET(TYPE_TABS)
-    Observable<BaseResult<TypeTabs>> getTypeTabs(@Query("fid") String fid);
+    Observable<BaseResult<TypeTabs>> getTypeTabs(@Query("fid") int fid);
+
+    @GET(TYPE_IDS)
+    Observable<BaseResult<TypeId>> getTypeIds(@Query("id") int fid);
 
     @GET(TYPE_LIST)
     Observable<BaseResult<TypeList>> getTypeList(@Query("cid") int cid, @Query("pagenum") int pagenum);
